@@ -1,0 +1,22 @@
+.button-container {
+    position: absolute;
+    top: 70px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .map-button {
+    background: #05B9FF;
+    border: 2px solid #FF0B0B4D;
+    margin-left: 5px;
+    margin-bottom: 10px; /* Adjust the spacing between buttons */
+    border-radius: 30px;
+    padding: 5px 15px 5px 15px;
+    cursor: pointer;
+  
+    img {
+      width: 30px; /* Adjust the button image size */
+      height: 30px; /* Adjust the button image size */
+    }
+  }

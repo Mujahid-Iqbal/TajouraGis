@@ -3,6 +3,15 @@
     <div id="map">
         <!-- Your map content goes here -->
     </div>
-    <button mat-raised-button (click)="openDialog()" style="position: absolute;">Open Dialog</button>
+    <!-- <button mat-raised-button (click)="openDialog()" style="position: absolute;">Open Dialog</button> -->
 
+</div>
+
+<div class="button-container">
+    <button class="map-button"  matTooltip="Select Map Style" (click)="openLayersDialog()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="layers"></mat-icon>
+    </button>
+    <button class="map-button" matTooltip="NearBy School" (click)="openNearByDialog()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="school"></mat-icon>
+    </button>
 </div>
