@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+/* Importing Font Family */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Style the map container */
+#map-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 100% of the viewport height */
+}
+
+/* Style the map */
+#map {
+    flex: 1; /* Grow and take remaining space */
+    width: 100%;
+}
