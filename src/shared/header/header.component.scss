@@ -3,7 +3,8 @@
 .bg-primary-nav {
   background-color: $primary;
   color: $primary-color;
-  font-family: $font-family
+  font-family: $font-family;
+  z-index: 1000;
 }
 .spacer {
   flex: 1; /* Pushes the button to the right */

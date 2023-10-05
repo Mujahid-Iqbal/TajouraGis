@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { PagesModule } from './pages/pages.module';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+import { CommonModule } from '@angular/common';
+
+
 
 const routes: Routes = [
   // Existing routes
@@ -26,10 +28,10 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forRoot(routes),
-    BrowserModule,
-    BrowserAnimationsModule,
+    CommonModule,
+    NgScrollbarModule,
     SharedModule,
-    PagesModule
+    PagesModule,
   ],
   exports: [RouterModule],
   providers: [],

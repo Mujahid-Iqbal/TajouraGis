@@ -1,0 +1,172 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Styles for the mat-list-item */
+mat-list-item {
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  mat-list-item.active {
+    background-color: #2196F3; /* Change this color to your desired active color */
+    color: #fff; /* Change text color to your desired active color */
+    border-radius: 10px;
+  }
+  
+  /* Styles for the card container */
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Styles for the cards */
+  .card1 {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    bottom: 0;
+    left: 52px;
+    right: 0;
+    width: 230px;
+    h3 {
+      text-align: center;
+    }
+  }
+
+  .card2 {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+    position: absolute;
+    top: 98px;
+    z-index: 1;
+    bottom: 0;
+    left: 52px;
+    right: 0;
+    width: 230px;
+    h3 {
+      text-align: center;
+    }
+  }
+  .card3 {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+    position: absolute;
+    top: 150px;
+    z-index: 1;
+    bottom: 0;
+    left: 52px;
+    right: 0;
+    width: 230px;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  //choose map scss
+  .style-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .style-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .style-button.active {
+    background-color: #0078d4;
+  }
+  
+  .style-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .style-image {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+  
+  .style-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  //nearBY
+  /* Style the Nearby Schools section header */
+.container{
+    padding: 5px 5px;
+}
+h3 {
+    font-size: 20px;
+    color: #333; /* Change to your preferred text color */
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Style the Nearby Schools list */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Style each list item */
+  li {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc; /* Add a border around each item */
+    border-radius: 5px; /* Add rounded corners */
+    background-color: #f9f9f9; /* Background color for each item */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9px;
+  }
+  
+  /* Style the school name */
+  li span {
+    font-weight: bold;
+  }
+  
+  /* Style the distance */
+  li small {
+    color: #777; /* Change to your preferred text color */
+  }
+  

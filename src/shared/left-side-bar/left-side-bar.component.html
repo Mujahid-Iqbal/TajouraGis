@@ -1,0 +1,95 @@
+<mat-sidenav-container fullscreen
+class="example-container"
+[hasBackdrop]="false"
+[@.disabled]="temporaryDisabled"
+>
+  <mat-sidenav #leftsidenav  mode="side" class="example-sidenav" [ngStyle]="{ 'width.em': sidenavWidth }" opened="true" position="start"
+     mode="over"
+    [fixedInViewport]="true"
+    [fixedTopGap]="65"
+  >
+    <div class="logomain"></div>
+    <mat-nav-list>
+      <mat-list-item (click)="selectCard(1)" [class.active]="selectedCard === 1">
+        <mat-icon mat-list-icon>map</mat-icon>
+      </mat-list-item>
+    
+      <mat-list-item (click)="selectCard(2)" [class.active]="selectedCard === 2">
+        <mat-icon mat-list-icon>layers</mat-icon>
+      </mat-list-item>
+    
+      <mat-list-item (click)="selectCard(3)" [class.active]="selectedCard === 3">
+        <mat-icon mat-list-icon>school</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+    
+</mat-sidenav>
+
+<mat-sidenav-content class="content">
+  <app-map></app-map>
+</mat-sidenav-content>
+
+<mat-sidenav #rightsidenav  mode="over" class="example-sidenav" [ngStyle]="{ 'width.em': 60 }"  position="end"
+         mode="over"
+        [fixedInViewport]="true"
+        [fixedTopGap]="65"
+      >
+     
+          <mat-sidenav-content class="content">
+        <app-info-panel></app-info-panel>
+    </mat-sidenav-content>
+    </mat-sidenav>
+
+</mat-sidenav-container>
+
+<div class="card-container">
+  <div class="card1" *ngIf="selectedCard === 1">
+    <!-- Content for card 1 -->
+    <div class="style-panel">
+      <button
+        *ngFor="let style of styles"
+        [class.active]="style === mapStyle"
+        (click)="changeMapStyle(style)"
+        class="style-button"
+      >
+        <div class="style-content">
+          <img [src]="getMapStyleImage(style)" alt="{{ style }}" class="style-image" />
+          <span class="style-name">{{ styleToMapName[style] }}</span>
+        </div>
+      </button>
+    </div>
+    
+  </div>
+
+  <div class="card2" *ngIf="selectedCard === 2">
+    <!-- Content for card 2 -->
+    <h3>Select Layers</h3>
+    <div>
+      <mat-checkbox [(ngModel)]="checkBoxChecked">Schools</mat-checkbox>
+    </div>
+    <div>
+      <mat-checkbox [disabled]="true">Hospitals</mat-checkbox>
+    </div>
+    <div>
+      <mat-checkbox [disabled]="true">Universities</mat-checkbox>
+    </div>
+    <div>
+      <mat-checkbox [disabled]="true">Parks</mat-checkbox>
+    </div>
+    <div>
+      <mat-checkbox [disabled]="true">Police Stations</mat-checkbox>
+    </div>
+  </div>
+
+  <div class="card3" *ngIf="selectedCard === 3">
+    <!-- Content for card 3 -->
+    <div class="container">
+      <h3>Nearby Schools</h3>
+      <ul>
+          <li *ngFor="let school of schools.slice(0, 5)"> <!-- Display the 5 nearest schools -->
+             ({{ school.distance.toFixed(2) }} meters away) {{ school['School Name'] }}
+          </li>
+        </ul>
+    </div>  
+  </div>
+</div>

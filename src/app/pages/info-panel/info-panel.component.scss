@@ -1,0 +1,91 @@
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+
+.container {
+  text-align: center;
+  padding: 20px;
+  position: relative; /* Add relative positioning to the container */
+
+  .close-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+
+    span {
+      font-size: 24px;
+      color: $primary-color;
+    }
+  }
+
+  h3 {
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-style: italic;
+    color: $secondary-color;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid $secondary-color;
+    margin-top: 20px;
+    direction: rtl;
+    th, td {
+      padding: 10px;
+      border: 1px solid $secondary-color;
+    }
+
+    th {
+      background-color: $primary-color;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+  }
+}
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+}
+
+.school-info {
+  // background-color: #fff;
+  padding: 20px;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  text-align: left;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Add more styles as needed */

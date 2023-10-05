@@ -16,3 +16,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     flex: 1; /* Grow and take remaining space */
     width: 100%;
 }
+
+.basic-container {
+  padding: 5px;
+}
+
+
+::ng-deep .custom-dialog {
+    /* Apply overflow: auto to the dialog content */
+    overflow: auto;
+  
+    /* Set a maximum height for the dialog content */
+    max-height: 80vh; /* Adjust this value as needed */
+}
