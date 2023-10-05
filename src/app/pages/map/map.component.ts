@@ -50,6 +50,7 @@ export class MapComponent implements OnInit {
 
         // marker.setPopup(popup);
         // marker.togglePopup();
+      
       const schoolLocation = new mapboxgl.LngLat(school.X, school.Y);
       const distance = this.calculateDistance(this.userLocation, schoolLocation);
       school['distance'] = distance;  // Add distance to each school
@@ -62,6 +63,19 @@ export class MapComponent implements OnInit {
     });
     // Sort schools by distance
     this.mapService.schoolsData.sort((a:any, b: any) => a['distance'] - b['distance']);
+  }
+
+  getUserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const userLocation = [position.coords.longitude, position.coords.latitude];
+        
+      }, (error) => {
+        console.error('Error getting user location:', error);
+      });
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
   }
 
   calculateDistance(point1: mapboxgl.LngLat, point2: mapboxgl.LngLat): number {
