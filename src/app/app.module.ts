@@ -13,13 +13,13 @@ import { CommonModule } from '@angular/common';
 const routes: Routes = [
   // Existing routes
   {
-    path: 'map',
+    path: '',
     loadChildren: () =>
       import('./pages/pages.module').then(
         (m) => m.PagesModule
       ),
   },
-  { path: '**', redirectTo: 'map', pathMatch: 'full' },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

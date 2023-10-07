@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: row;
   }
- 
+
   .map-button {
     background: #05B9FF;
     border: 2px solid #FF0B0B4D;
@@ -27,7 +27,7 @@
     border-radius: 30px;
     padding: 5px 15px 5px 15px;
     cursor: pointer;
-  
+
     img {
       width: 30px; /* Adjust the button image size */
       height: 30px; /* Adjust the button image size */
@@ -52,4 +52,12 @@
   padding: 5px 10px;
   cursor: pointer;
   margin-top: 10px;
+}
+
+.search-input {
+  direction: rtl;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
 }

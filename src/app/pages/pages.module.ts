@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule
 import {MatIconModule} from '@angular/material/icon';
@@ -29,6 +31,7 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     NgScrollbarModule,
+    FormsModule,
     MatDialogModule,
     MatIconModule,
     MatTooltipModule,
