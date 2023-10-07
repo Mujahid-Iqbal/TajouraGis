@@ -39,21 +39,21 @@ export class LeftSideBarComponent implements OnInit {
   constructor(private customService: CustomDialogService, private mapService: MapServiceService, private el: ElementRef) { }
 
   ngOnInit() {
+    
     setTimeout(() => {
       const userLocationMarker = new mapboxgl.Marker({
         color: 'red' // Customize the marker color
       });
       navigator.geolocation.getCurrentPosition((position) => {
         const userLocation: any = [position.coords.longitude, position.coords.latitude];
-        console.log(userLocation)
-          // Set the map's center to the user's location
-        this.mapService.map.setCenter(userLocation);
-    
+        // const userLocation: any = [13.3497940, 32.8085120];
+        console.log(userLocation)  
       // Set the marker's location to the user's location
-        userLocationMarker.setLngLat(userLocation);
+      //   userLocationMarker.setLngLat(userLocation);
     
-      // Add the marker to the map
-        userLocationMarker.addTo(this.mapService.map);
+      // // Add the marker to the map
+      //   userLocationMarker.addTo(this.mapService.map);
+        
         const nearbySchools = this.findNearbyPoints( this.mapService.schoolsData, userLocation, 7);
         this.schools = nearbySchools.sort((a: any, b: any) => a['distance'] - b['distance']);
       }, (error) => {
