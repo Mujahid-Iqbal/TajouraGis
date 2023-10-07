@@ -3,7 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { CustomDialogService } from 'src/app/core/services/dialog-service/custom-dialog.service';
 import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
 import * as mapboxgl from 'mapbox-gl';
-import * as turf from '@turf/turf';
+import * as geolib from 'geolib';
 
 @Component({
   selector: 'app-left-side-bar',
@@ -45,16 +45,19 @@ export class LeftSideBarComponent implements OnInit {
         color: 'red' // Customize the marker color
       });
       navigator.geolocation.getCurrentPosition((position) => {
-        const userLocation: any = [position.coords.longitude, position.coords.latitude];
+        // const userLocation: any = [position.coords.longitude, position.coords.latitude];
         // const userLocation: any = [13.3497940, 32.8085120];
-        console.log(userLocation)  
-      // Set the marker's location to the user's location
+        const targetLocation = { latitude: 13.3497940, longitude: 32.8085120 };
+        
+      //   console.log(userLocation)  
+      // // Set the marker's location to the user's location
       //   userLocationMarker.setLngLat(userLocation);
     
       // // Add the marker to the map
       //   userLocationMarker.addTo(this.mapService.map);
         
-        const nearbySchools = this.findNearbyPoints( this.mapService.schoolsData, userLocation, 7);
+        const nearbySchools = this.findNearbyPoints( this.mapService.schoolsData, targetLocation, 6);
+        console.log('ear',nearbySchools)
         this.schools = nearbySchools.sort((a: any, b: any) => a['distance'] - b['distance']);
       }, (error) => {
         // Handle geolocation error here
@@ -74,23 +77,54 @@ export class LeftSideBarComponent implements OnInit {
     }
   }
 
-  findNearbyPoints(data: any[], targetLocation: number[], radius: number) {
-    const options: any = { units: 'kilometers' };
-    const targetPoint = turf.point(targetLocation);
+  findNearbyPoints(data: any[], targetLocation: { latitude: number, longitude: number }, radius: number) {
     const nearbyPoints: { data: any, distance: number }[] = [];
 
     for (const point of data) {
-      const distance = turf.distance(targetPoint, turf.point([point.X, point.Y]), options);
-
-      if (distance <= radius) {
+    //   console.log('pointY', point.Y , 'PointX', point.X)
+    //   console.log(
+    //     'You are ',
+    //     geolib.getDistance(targetLocation, {
+    //         latitude: 13.44093,
+    //         longitude: 32.7941083,
+    //     }),
+    //     'meters away from 51.525, 7.4575'
+    // );
+      const distance = geolib.getDistance(targetLocation, { latitude: point.X, longitude:  point.Y});
+      console.log(distance)
+      if (distance <= radius * 1000) { // Convert the radius to meters
         // Include the distance directly in the point object
+        // const distance1 = geolib.convertDistance(distance, 'km');
         point.distance = distance;
         nearbyPoints.push(point);
       }
     }
 
     return nearbyPoints;
-  }  
+  }
+
+
+  calculateDistance(point1: { latitude: number, longitude: number }, point2: { latitude: number, longitude: number }) {
+    const earthRadiusKm = 6371; // Earth radius in kilometers
+    const lat1Rad = this.degreesToRadians(point1.latitude);
+    const lat2Rad = this.degreesToRadians(point2.latitude);
+    const deltaLat = this.degreesToRadians(point2.latitude - point1.latitude);
+    const deltaLon = this.degreesToRadians(point2.longitude - point1.longitude);
+
+    const a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+      Math.cos(lat1Rad) * Math.cos(lat2Rad) *
+      Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distance = earthRadiusKm * c;
+    return distance;
+  }
+
+  degreesToRadians(degrees: number) {
+    return degrees * (Math.PI / 180);
+  }
+
 
   selectCard(cardNumber: number) {
     if (this.selectedCard === cardNumber) {
