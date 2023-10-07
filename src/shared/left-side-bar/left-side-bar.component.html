@@ -61,33 +61,33 @@ class="example-container"
     
   </div>
 
-  <div class="card2" *ngIf="selectedCard === 2">
+  <div class="card2" *ngIf="selectedCard === 2" style="direction: rtl;">
     <!-- Content for card 2 -->
-    <h3>Select Layers</h3>
+    <h3>أختار الطبقة</h3>
     <div>
-      <mat-checkbox [(ngModel)]="checkBoxChecked">Schools</mat-checkbox>
+      <mat-checkbox [(ngModel)]="checkBoxChecked">المدارس</mat-checkbox>
     </div>
     <div>
-      <mat-checkbox [disabled]="true">Hospitals</mat-checkbox>
+      <mat-checkbox [disabled]="true">المستشفيات</mat-checkbox>
     </div>
     <div>
-      <mat-checkbox [disabled]="true">Universities</mat-checkbox>
+      <mat-checkbox [disabled]="true">الجامعات</mat-checkbox>
     </div>
     <div>
-      <mat-checkbox [disabled]="true">Parks</mat-checkbox>
+      <mat-checkbox [disabled]="true">الحدائق</mat-checkbox>
     </div>
     <div>
-      <mat-checkbox [disabled]="true">Police Stations</mat-checkbox>
+      <mat-checkbox [disabled]="true">مراكز الشرطة</mat-checkbox>
     </div>
   </div>
 
-  <div class="card3" *ngIf="selectedCard === 3">
+  <div class="card3" *ngIf="selectedCard === 3" style="direction: rtl;">
     <!-- Content for card 3 -->
     <div class="container">
-      <h3>Nearby Schools</h3>
+      <h3>المدارس القريبة</h3>
       <ul>
           <li *ngFor="let school of schools.slice(0, 5)"> <!-- Display the 5 nearest schools -->
-             ({{ school.distance.toFixed(2) }} meters away) {{ school['School Name'] }}
+            {{ school['School Name'] }} ({{ school.distance.toFixed(2) }} على بعد أمتار) 
           </li>
         </ul>
     </div>  

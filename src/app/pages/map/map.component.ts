@@ -62,11 +62,12 @@ export class MapComponent implements OnInit {
     this.mapService.map = new mapboxgl.Map({
       accessToken: environment.mapboxAccessToken,
       container: 'map', // Replace 'map' with the ID of your map container element in the template
-      style: this.myDialogService.selectedStyle ? this.myDialogService.selectedStyle : 'mapbox://styles/mapbox/outdoors-v11',
+      style: this.myDialogService.selectedStyle ? this.myDialogService.selectedStyle : 'mapbox://styles/mujahid-iqbal/clnfw2m1u007b01pi2h2ufz4w',
       center: [32.7782362, 13.3947453], // Set the initial map center coordinates
       zoom: 6, // Set the initial zoom level
+     
     });
-
+    
     // Lazy load the RTL text plugin
     mapboxgl.setRTLTextPlugin(
       'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js',
@@ -75,7 +76,7 @@ export class MapComponent implements OnInit {
     );
 
     // For demonstration purposes, let's assume a fixed user location
-    this.userLocation = new mapboxgl.LngLat(13.400994, 32.780778);
+   
     this.mapService.schoolsData.forEach((school: any) => {
       const marker = new mapboxgl.Marker()
         .setLngLat([school.X, school.Y])
@@ -95,9 +96,6 @@ export class MapComponent implements OnInit {
         .setHTML(`<p>${school['School Name']}</p>`)
         .addTo(this.mapService.map);;
 
-      const schoolLocation = new mapboxgl.LngLat(school.X, school.Y);
-        const distance = this.calculateDistance(this.userLocation, schoolLocation);
-        school['distance'] = distance;  // Add distance to each school
 
 
       marker.getElement().addEventListener('click', () => {
@@ -106,29 +104,8 @@ export class MapComponent implements OnInit {
 
       });
     });
-    // Sort schools by distance
-    this.mapService.schoolsData.sort((a: any, b: any) => a['distance'] - b['distance']);
+   
   }
 
-
-
-  calculateDistance(point1: mapboxgl.LngLat, point2: mapboxgl.LngLat): number {
-    const R = 6371e3;  // Radius of the Earth in meters
-    const φ1 = this.toRadians(point1.lat);
-    const φ2 = this.toRadians(point2.lat);
-    const Δφ = this.toRadians(point2.lat - point1.lat);
-    const Δλ = this.toRadians(point2.lng - point1.lng);
-
-    const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-      Math.cos(φ1) * Math.cos(φ2) *
-      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-    return R * c;
-  }
-
-  toRadians(degrees: number): number {
-    return degrees * Math.PI / 180;
-  }
 
 }

@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 export class MapServiceService {
   map!: mapboxgl.Map;
   schoolsData: any;
+  userLocation: any
   sidenavIsOpen?: boolean
    infoPanelSchoolData: Subject<any> = new Subject<any>();
   public rightSideNav!: MatSidenav;

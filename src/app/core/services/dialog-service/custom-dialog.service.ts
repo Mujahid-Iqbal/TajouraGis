@@ -25,9 +25,9 @@ export class CustomDialogService {
   getMapStyleImage(style: string): string {
     // Map style names to their corresponding images
     const styleImages: any = {
-      'mapbox://styles/mapbox/streets-v11': 'path/to/streets-image.png',
-      'mapbox://styles/mapbox/satellite-v9': 'path/to/satellite-image.png',
-      'mapbox://styles/mapbox/outdoors-v11': 'path/to/outdoors-image.png',
+      'mapbox://styles/mujahid-iqbal/clnfw2m1u007b01pi2h2ufz4w': 'path/to/streets-image.png',
+      'mapbox://styles/mujahid-iqbal/clnfwrkjq03ud01nz97prc7z6': 'path/to/satellite-image.png',
+      'mapbox://styles/mujahid-iqbal/clnfwpic1021v01qncbsnc8o4': 'path/to/outdoors-image.png',
       // Add more style-to-image mappings as needed
     };
   

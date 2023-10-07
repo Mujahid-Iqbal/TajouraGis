@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { MatSidenav } from '@angular/material/sidenav';
 import { CustomDialogService } from 'src/app/core/services/dialog-service/custom-dialog.service';
 import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
+import * as mapboxgl from 'mapbox-gl';
 
 @Component({
   selector: 'app-left-side-bar',
@@ -15,30 +16,40 @@ export class LeftSideBarComponent implements OnInit {
   temporaryDisabled: any = false;
   checkBoxChecked: boolean = true; // Default checked state
   schools: any
-  mapStyle: string = 'mapbox://styles/mapbox/streets-v11';
+  mapStyle: string = 'mapbox://styles/mujahid-iqbal/clnfw2m1u007b01pi2h2ufz4w';
 
   getMapStyleImage(style: string): string {
     // Define mappings from style names to image URLs here
     const styleImageMappings: Record<string, string> = {
-      'mapbox://styles/mapbox/streets-v11': 'assets/img/street.jpeg',
-      'mapbox://styles/mapbox/satellite-v9': 'assets/img/satellite.png',
-      'mapbox://styles/mapbox/outdoors-v11': 'assets/img/outdoors.png'
+      'mapbox://styles/mujahid-iqbal/clnfw2m1u007b01pi2h2ufz4w': 'assets/img/street.jpeg',
+      'mapbox://styles/mapbox/satellite-v9?language=ar': 'assets/img/satellite.png',
+      'mapbox://styles/mujahid-iqbal/clnfwpic1021v01qncbsnc8o4': 'assets/img/outdoors.png'
     };
 
     return styleImageMappings[style];
   }
 
   styleToMapName: any = {
-    'mapbox://styles/mapbox/streets-v11': 'Streets',
-    'mapbox://styles/mapbox/satellite-v9': 'Satellite',
-    'mapbox://styles/mapbox/outdoors-v11': 'Outdoors'
+    'mapbox://styles/mujahid-iqbal/clnfw2m1u007b01pi2h2ufz4w': 'الطرق',
+    'mapbox://styles/mapbox/satellite-v9?language=ar': 'الأقمار الصناعية',
+    'mapbox://styles/mujahid-iqbal/clnfwpic1021v01qncbsnc8o4': 'الخارج'
   };
   styles = Object.keys(this.styleToMapName);
   constructor(private customService: CustomDialogService, private mapService: MapServiceService, private el: ElementRef) { }
 
   ngOnInit() {
     setTimeout(() => {
-      this.schools = this.mapService.schoolsData
+      navigator.geolocation.getCurrentPosition((position) => {
+        const userLocation = [position.coords.longitude, position.coords.latitude];
+        console.log(userLocation)
+        this.mapService.userLocation = new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude);
+        console.log(this.mapService.userLocation)
+        this.getNearByScools()
+      }, (error) => {
+        // Handle geolocation error here
+        console.error('Error getting user location:', error);
+      });
+      
     }, 1000);
     this.mapService.setRightSidenav(this.rightsidenav);
   }
@@ -52,6 +63,34 @@ export class LeftSideBarComponent implements OnInit {
     }
   }
 
+  getNearByScools() {
+    this.mapService.schoolsData.forEach((school: any) => {
+      const schoolLocation = new mapboxgl.LngLat(school.X, school.Y);
+        const distance = this.calculateDistance(this.mapService.userLocation, schoolLocation);
+        school['distance'] = distance;  // Add distance to each school
+    });
+     // Sort schools by distance
+     this.schools = this.mapService.schoolsData.sort((a: any, b: any) => a['distance'] - b['distance']);
+  }
+
+  calculateDistance(point1: mapboxgl.LngLat, point2: mapboxgl.LngLat): number {
+    const R = 6371e3;  // Radius of the Earth in meters
+    const φ1 = this.toRadians(point1.lat);
+    const φ2 = this.toRadians(point2.lat);
+    const Δφ = this.toRadians(point2.lat - point1.lat);
+    const Δλ = this.toRadians(point2.lng - point1.lng);
+
+    const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+      Math.cos(φ1) * Math.cos(φ2) *
+      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return R * c;
+  }
+
+  toRadians(degrees: number): number {
+    return degrees * Math.PI / 180;
+  }
   
 
   selectCard(cardNumber: number) {
