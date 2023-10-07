@@ -3,6 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { CustomDialogService } from 'src/app/core/services/dialog-service/custom-dialog.service';
 import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
 import * as mapboxgl from 'mapbox-gl';
+import * as turf from '@turf/turf';
 
 @Component({
   selector: 'app-left-side-bar',
@@ -39,12 +40,22 @@ export class LeftSideBarComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
+      const userLocationMarker = new mapboxgl.Marker({
+        color: 'red' // Customize the marker color
+      });
       navigator.geolocation.getCurrentPosition((position) => {
-        const userLocation = [position.coords.longitude, position.coords.latitude];
+        const userLocation: any = [position.coords.longitude, position.coords.latitude];
         console.log(userLocation)
-        this.mapService.userLocation = new mapboxgl.LngLat(position.coords.longitude, position.coords.latitude);
-        console.log(this.mapService.userLocation)
-        this.getNearByScools()
+          // Set the map's center to the user's location
+        this.mapService.map.setCenter(userLocation);
+    
+      // Set the marker's location to the user's location
+        userLocationMarker.setLngLat(userLocation);
+    
+      // Add the marker to the map
+        userLocationMarker.addTo(this.mapService.map);
+        const nearbySchools = this.findNearbyPoints( this.mapService.schoolsData, userLocation, 7);
+        this.schools = nearbySchools.sort((a: any, b: any) => a['distance'] - b['distance']);
       }, (error) => {
         // Handle geolocation error here
         console.error('Error getting user location:', error);
@@ -63,35 +74,23 @@ export class LeftSideBarComponent implements OnInit {
     }
   }
 
-  getNearByScools() {
-    this.mapService.schoolsData.forEach((school: any) => {
-      const schoolLocation = new mapboxgl.LngLat(school.X, school.Y);
-        const distance = this.calculateDistance(this.mapService.userLocation, schoolLocation);
-        school['distance'] = distance;  // Add distance to each school
-    });
-     // Sort schools by distance
-     this.schools = this.mapService.schoolsData.sort((a: any, b: any) => a['distance'] - b['distance']);
-  }
+  findNearbyPoints(data: any[], targetLocation: number[], radius: number) {
+    const options: any = { units: 'kilometers' };
+    const targetPoint = turf.point(targetLocation);
+    const nearbyPoints: { data: any, distance: number }[] = [];
 
-  calculateDistance(point1: mapboxgl.LngLat, point2: mapboxgl.LngLat): number {
-    const R = 6371e3;  // Radius of the Earth in meters
-    const φ1 = this.toRadians(point1.lat);
-    const φ2 = this.toRadians(point2.lat);
-    const Δφ = this.toRadians(point2.lat - point1.lat);
-    const Δλ = this.toRadians(point2.lng - point1.lng);
+    for (const point of data) {
+      const distance = turf.distance(targetPoint, turf.point([point.X, point.Y]), options);
 
-    const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-      Math.cos(φ1) * Math.cos(φ2) *
-      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      if (distance <= radius) {
+        // Include the distance directly in the point object
+        point.distance = distance;
+        nearbyPoints.push(point);
+      }
+    }
 
-    return R * c;
-  }
-
-  toRadians(degrees: number): number {
-    return degrees * Math.PI / 180;
-  }
-  
+    return nearbyPoints;
+  }  
 
   selectCard(cardNumber: number) {
     if (this.selectedCard === cardNumber) {

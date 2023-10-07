@@ -87,7 +87,7 @@ class="example-container"
       <h3>المدارس القريبة</h3>
       <ul>
           <li *ngFor="let school of schools.slice(0, 5)"> <!-- Display the 5 nearest schools -->
-            {{ school['School Name'] }} ({{ school.distance.toFixed(2) }} على بعد أمتار) 
+            {{ school['School Name'] }} ({{ school.distance.toFixed(2) }} على بعد كيلومتر) 
           </li>
         </ul>
     </div>  
