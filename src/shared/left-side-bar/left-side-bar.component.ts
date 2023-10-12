@@ -45,16 +45,18 @@ export class LeftSideBarComponent implements OnInit {
         color: 'red' // Customize the marker color
       });
       navigator.geolocation.getCurrentPosition((position) => {
-        // const userLocation: any = [position.coords.longitude, position.coords.latitude];
-        // const userLocation: any = [13.3497940, 32.8085120];
-        const targetLocation = { latitude: 13.3497940, longitude: 32.8085120 };
+        const userLocation1: any = [position.coords.longitude, position.coords.latitude];
+        console.log('userLocation1', userLocation1)
+        const userLocation: any = [13.358669 ,32.816529];
+        console.log('location' ,userLocation)
+        const targetLocation = { latitude: 13.358669, longitude:  32.816529};
         
-      //   console.log(userLocation)  
-      // // Set the marker's location to the user's location
-      //   userLocationMarker.setLngLat(userLocation);
+        // console.log(userLocation)  
+      // Set the marker's location to the user's location
+        userLocationMarker.setLngLat(userLocation);
     
-      // // Add the marker to the map
-      //   userLocationMarker.addTo(this.mapService.map);
+      // Add the marker to the map
+        userLocationMarker.addTo(this.mapService.map);
         
         const nearbySchools = this.findNearbyPoints( this.mapService.schoolsData, targetLocation, 6);
         console.log('ear',nearbySchools)
