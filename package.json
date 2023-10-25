@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.0.0",
+    "@angular/animations": "^16.2.10",
     "@angular/cdk": "^16.2.6",
     "@angular/common": "^16.0.0",
     "@angular/compiler": "^16.0.0",
@@ -26,6 +26,7 @@
     "geolib": "^3.3.4",
     "mapbox-gl": "^2.15.0",
     "ngx-scrollbar": "^13.0.3",
+    "ngx-toastr": "^17.0.2",
     "perfect-scrollbar": "^1.5.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

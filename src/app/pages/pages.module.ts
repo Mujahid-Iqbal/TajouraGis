@@ -4,8 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog'; // Import MatDialogModule
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -16,9 +15,19 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MapComponent } from './map/map.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InfoPanelComponent } from './info-panel/info-panel.component';
+import { AuthGuard } from '../core/auth/guards/auth.guard';
 
 const routes: Routes = [
-  
+
+  {
+    path:'',
+    loadChildren: ()=> import('./auth/auth.module').then(p=>p.AuthModule)
+  },
+  {
+    path: 'map',
+    component: MapComponent,
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
@@ -30,13 +39,14 @@ const routes: Routes = [
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
     NgScrollbarModule,
     FormsModule,
     MatDialogModule,
     MatIconModule,
     MatTooltipModule,
     MatToolbarModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   exports: [InfoPanelComponent, MapComponent],
 })

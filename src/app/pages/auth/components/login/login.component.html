@@ -1,0 +1,92 @@
+<ng-container>
+  <div class="container">
+    <div class="m-0 row h-100v page">
+      <div class="col-lg-5 align-self-center responsive-hide-banner">
+        <div class="align-self-center">
+          <img src="./assets/img/side-logo.svg" width="400px" />
+        </div>
+      </div>
+      <div
+        class="col-lg-7 align-self-center d-flex justify-content-center left-banner"
+      >
+        <div class="bg-white rounded inner-login-form w-75">
+          <form
+            class="m-3"
+            (ngSubmit)="onLoginSubmit()"
+            [formGroup]="loginForm"
+          >
+            <div class="p-2 pt-5 pb-3 row">
+              <!-- Left -->
+              <div class="col-md-12 col-12">
+                <div class="mb-3 form-group">
+                  <label class="form-label">User Name</label>
+                  <input
+                    type="email"
+                    [ngClass]="{
+                      'is-invalid':
+                        (f['userName'].dirty || loginFormSubmitted) &&
+                        f['userName'].errors
+                    }"
+                    class="form-control form-input"
+                    placeholder="Enter User Name"
+                    formControlName="userName"
+                    id="userName"
+                    required
+                  />
+
+                  <div
+                    *ngIf="(f['userName'].dirty || loginForm) && f['userName'].errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f['userName'].errors?.['required']">User Name is required</div>
+                  </div>
+                </div>
+                <div class="mb-3 form-group">
+                  <label class="form-label">Password</label>
+                  <input
+                    type="password"
+                    [ngClass]="{
+                      'is-invalid':
+                        (f['password'].dirty || loginFormSubmitted) &&
+                        f['password'].errors
+                    }"
+                    class="form-control form-input"
+                    placeholder="Enter Password"
+                    formControlName="password"
+                    id="password"
+                    required
+                  />
+                  <div
+                    *ngIf="
+                      loginForm.get('password')?.invalid &&
+                      (loginForm.get('password')?.dirty ||
+                        loginForm.get('password')?.touched)
+                    "
+                    class="invalid-feedback"
+                  >
+                  <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+                  <div *ngIf="f['password'].errors?.['minlength']">
+                      Password can not be less than 6 characters
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mx-auto mt-3 text-center col-12">
+                <button
+                  class="btn btn-primary main-btn"
+                >
+
+                  {{loading === true ? '' : 'Login'}}
+                  <!-- <i class="fa fa-spinner fa-spin" ></i> -->
+                  <span *ngIf="loading"><i class="fa fa-spinner fa-spin"></i></span>
+
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

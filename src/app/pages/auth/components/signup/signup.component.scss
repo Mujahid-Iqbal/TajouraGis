@@ -1,0 +1,191 @@
+
+@import "../../../../../assets/variables.scss";
+.register-logo {
+  margin-top: 50%;
+  padding-left: 30%;
+}
+.page {
+  height: 94vh;
+  display: flex;
+  justify-content: space-between;
+  .btn {
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    line-height: 25px !important;
+    padding: 18px 35px 18px 35px !important;
+  }
+}
+.h-100v {
+  height: 90vh !important;
+}
+// cursor
+.cursor-pointer {
+  cursor: pointer;
+}
+.align-self-center {
+  display: flex;
+  justify-content: center;
+}
+// Form
+.form-label {
+  font-size: 18px;
+  line-height: 14.28px;
+  font-weight: 700;
+  line-height: 27.28px;
+  color: #272727;
+}
+
+.form-input {
+  width: 330.5px;
+  height: 60px;
+  background: $main-bg !important;
+  background-color: $main-bg !important;
+  border: 1px solid #2E4268 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.form-input:focus {
+  background: $main-bg !important;
+  background-color: $main-bg !important;
+  border: 1px solid #ffffff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+::-webkit-input-placeholder {
+  font-weight: 400;
+  font-size: 14px; /* 18px*/
+  line-height: 25px;
+  color: $main-bg;
+}
+
+:-ms-input-placeholder {
+  font-weight: 400;
+  font-size: 14px; /* 18px*/
+  line-height: 25px;
+  color: $main-bg;
+}
+
+::placeholder {
+  font-weight: 400;
+  font-size: 14px; /* 18px*/
+  line-height: 25px;
+  color: $main-bg;
+}
+
+// Button
+.main-btn {
+  background: $primary !important;
+  border-radius: 50px !important;
+  border: 1px solid $primary !important;
+  width: 200px;
+  height: 60px;
+}
+// Nav Bar
+.nav-tabs {
+  border: 1px solid rgba(46, 66, 104, 0.4);
+  border-radius: 60px;
+  padding: 2px;
+}
+.nav-link {
+  transition: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #4e4e4e;
+}
+.nav-tabs .nav-link {
+  border: none;
+}
+.nav-link.active {
+  background-color: #2e4268 !important;
+  border-radius: 50px;
+  color: white !important;
+}
+.nav-link:hover {
+  border-color: transparent !important;
+}
+
+// Container
+.main-container {
+  background: #ffffff;
+  border-radius: 20px;
+}
+// Login Now link
+.login-now {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 25px;
+  padding: 28px 30px 28px 40px;
+  gap: 14px;
+  justify-content: center;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background: #ffa400;
+  box-shadow: 0px 2px 14px rgba(0, 0, 0, 0.14);
+  border-radius: 50px 0px 0px 50px;
+  span {
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    /* identical to box height, or 100% */
+    color: #ffffff;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+}
+// Responsiveness media queries across all devices
+/* smartphones, iPhone, portrait 480x320 phones */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .page {
+    height: 130vh;
+    display: flex;
+    justify-content: space-between;
+    .btn {
+      font-style: normal !important;
+      font-weight: 700 !important;
+      font-size: 18px !important;
+      line-height: 25px !important;
+      padding: 18px 35px 18px 35px !important;
+    }
+  }
+  .responsive-hide-banner {
+    display: none;
+  }
+}
+/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+@media only screen and (min-width: 481px) and (max-width: 640px) {
+  .responsive-hide-banner {
+    display: none;
+  }
+}
+
+/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+  .page {
+    height: 94vh;
+    display: flex;
+    justify-content: space-between;
+    .btn {
+      font-style: normal !important;
+      font-weight: 700 !important;
+      font-size: 18px !important;
+      line-height: 25px !important;
+      padding: 18px 35px 18px 35px !important;
+    }
+  }
+  .responsive-hide-banner {
+    display: none;
+  }
+}
+

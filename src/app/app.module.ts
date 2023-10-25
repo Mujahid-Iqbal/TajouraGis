@@ -7,6 +7,10 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesModule } from './pages/pages.module';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from './core/auth/interceptors/error.interceptor';
+import { TokenInterceptor } from './core/auth/interceptors/token.interceptor';
 
 
 
@@ -19,7 +23,7 @@ const routes: Routes = [
         (m) => m.PagesModule
       ),
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -32,9 +36,17 @@ const routes: Routes = [
     NgScrollbarModule,
     SharedModule,
     PagesModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      timeOut: 5000, // 5 seconds
+      progressBar: true,
+    }),
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
