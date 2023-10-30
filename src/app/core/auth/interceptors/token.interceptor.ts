@@ -14,6 +14,7 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private authenticationService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    debugger
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser && currentUser.token) {
       request = request.clone({

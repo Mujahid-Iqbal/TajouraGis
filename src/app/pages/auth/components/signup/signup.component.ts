@@ -44,13 +44,16 @@ export class SignupComponent implements OnInit {
 
   onResgisterSubmit(): void {
     this.loading = true
-    const userName = this.userRegisterForm.get('userName')?.value;
+    const first_name = this.userRegisterForm.get('firstName')?.value;
+    const last_name = this.userRegisterForm.get('lastName')?.value;
+    const email = this.userRegisterForm.get('email')?.value;
+    const username = this.userRegisterForm.get('userName')?.value;
     const password = this.userRegisterForm.get('password')?.value;
-    this.authService.GetAuthToken(userName, password)
+    this.authService.userRegister(first_name, last_name, email, username, password)
       .pipe(first())
       .subscribe((data: any) => {
 
-        this.router.navigate(['/search']);
+        this.router.navigate(['/login']);
         this.loading = false
       },
         error => {

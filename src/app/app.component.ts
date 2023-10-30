@@ -11,6 +11,5 @@ export class AppComponent {
   isUser: boolean = false
   constructor(private authService: AuthService) { 
      this.isUser = this.authService.isLoggedIn()
-    console.log(this.isUser)
   }
 }

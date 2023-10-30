@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { InfoPanelComponent } from '../../../pages/info-panel/info-panel.component';
+import { InfoPanelComponent } from '../../../pages/dashboard/info-panel/info-panel.component';
 
 @Injectable({
   providedIn: 'root'

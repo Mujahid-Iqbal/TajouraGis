@@ -1,4 +1,4 @@
-@import "../../../assets/variables.scss";
+@import "../../../../assets/variables.scss";
 .header-container {
   position: absolute;
     top: 0px; /* Adjust the top position as needed */
@@ -60,4 +60,20 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 15px;
+  margin-right: 20px;
+}
+
+.user-dropdown {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .username {
+    direction: rtl;
+    margin-right: 10px; // Adjust the spacing as needed
+  }
+
+  .dropdown-icon {
+    font-size: 24px; // Adjust the icon size as needed
+  }
 }

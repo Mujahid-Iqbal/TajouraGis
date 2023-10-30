@@ -19,8 +19,7 @@ export class AuthService extends ApiService {
     this.currentUserSubject = new BehaviorSubject<AuthenticatedUser>(
       JSON.parse(localStorage.getItem('currentUser') || '{}')
     );
-    this.currentUser = this.currentUserSubject.asObservable();
-
+    this.currentUser = this.currentUserSubject.asObservable();      
   }
 
   public get currentUserValue(): AuthenticatedUser {
@@ -36,7 +35,7 @@ export class AuthService extends ApiService {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.currentUserSubject.next(user);
   }
-  isLoggedIn() {
+  isLoggedIn(): any {
     const token = localStorage.getItem('authToken');
     if (token) {
       return true;
@@ -47,7 +46,7 @@ export class AuthService extends ApiService {
   GetAuthToken(username: string, password: string): Observable<AuthenticatedUser> {
     return this.http
       .post<AuthenticatedUser>(
-        `${environment.apiBaseUrl}/account/login/`,
+        `${environment.apiBaseUrl}/login/`,
         {
           username,
           password,
@@ -58,21 +57,43 @@ export class AuthService extends ApiService {
         map((user: any) => {
           // store user details and token in local storage to keep user logged in between page refreshes
           localStorage.setItem('authToken', user.token);
-          localStorage.setItem('currentUser', JSON.stringify(user));
+          
           this.currentUserSubject.next(user);
           return user;
         }),
         shareReplay()
       );
   }
+
+  userRegister(first_name:string, last_name:string, email: string, username: string, password: string): Observable<AuthenticatedUser> {
+    return this.http
+      .post<AuthenticatedUser>(
+        `${environment.apiBaseUrl}/signup/`,
+        {
+          first_name,
+          last_name,
+          email,
+          username,
+          password,
+        },
+        this.httpOptions
+      )
+  }
+
+
   GetUser(): Observable<object> {
     return this.http
       .get<object>(
-        `${environment.apiBaseUrl}/account/user/`,
-        {
-        }
+        `${environment.apiBaseUrl}/me/`,this.httpOptions
       )
-      .pipe();
+      .pipe(
+        map((user: any) => {
+          // store user details and token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          return user;
+        }),
+        shareReplay()
+      );
   }
 
   logout() {

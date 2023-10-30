@@ -11,11 +11,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 // Import Mat Module
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgScrollbarModule } from 'ngx-scrollbar';
-
-import { MapComponent } from './map/map.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { InfoPanelComponent } from './info-panel/info-panel.component';
-import { AuthGuard } from '../core/auth/guards/auth.guard';
+import { MatMenuModule } from '@angular/material/menu';
+import { authGuard } from '../core/auth/guards/auth.guard';
 
 const routes: Routes = [
 
@@ -24,17 +21,15 @@ const routes: Routes = [
     loadChildren: ()=> import('./auth/auth.module').then(p=>p.AuthModule)
   },
   {
-    path: 'map',
-    component: MapComponent,
-    canActivate: [AuthGuard]
+    path:'dashboard',
+    loadChildren: ()=> import('./dashboard/dashboard.module').then(p=>p.DashboardModule),
+    canActivate: [authGuard]
   },
 ];
 
 @NgModule({
   declarations: [
-    MapComponent,
-    DashboardComponent,
-    InfoPanelComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -45,9 +40,10 @@ const routes: Routes = [
     MatDialogModule,
     MatIconModule,
     MatTooltipModule,
+    MatMenuModule,
     MatToolbarModule,
     RouterModule.forChild(routes),
   ],
-  exports: [InfoPanelComponent, MapComponent],
+  exports: [],
 })
 export class PagesModule { }

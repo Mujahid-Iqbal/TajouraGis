@@ -7,4 +7,12 @@
     <span>TAJOURA GIS | النظم الجغرافية لمدينة تاجوراء</span>
     <span class="spacer"></span>
     <input class="search-input" type="text" placeholder="البحث باسم المدرسة" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)" style="direction: rtl;" />
+
+    <div class="user-dropdown">
+        <span class="username">عَبْدُ النَّاصِر</span>
+        <mat-icon class="dropdown-icon" [matMenuTriggerFor]="userMenu">arrow_drop_down</mat-icon>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+      </div>
   </mat-toolbar>

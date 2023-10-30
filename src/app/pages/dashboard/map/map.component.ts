@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import * as mapboxgl from 'mapbox-gl';
 //Components
 import { CustomDialogService } from 'src/app/core/services/dialog-service/custom-dialog.service';
@@ -7,6 +6,8 @@ import { MapServiceService } from 'src/app/core/services/mapService/map-service.
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, debounceTime } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -18,7 +19,7 @@ export class MapComponent implements OnInit {
   searchQuery: string = '';
   private searchQuerySubject = new Subject<string>();
 
-  constructor(private myDialogService: CustomDialogService, private mapService: MapServiceService, private http: HttpClient, private dialog: MatDialog) { }
+  constructor(private myDialogService: CustomDialogService, private mapService: MapServiceService, private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
     const jsonFile = 'assets/jsonFile/schoolData.json';
@@ -107,5 +108,8 @@ export class MapComponent implements OnInit {
    
   }
 
+  logout() {
+    this.authService.logout()
+  }
 
 }

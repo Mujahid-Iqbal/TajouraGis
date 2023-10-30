@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
     this.authService.GetAuthToken(userName, password)
       .pipe(first())
       .subscribe((data: any) => {
-
-        this.router.navigate(['/search']);
+        this.router.navigate(['/dashboard']);
         this.loading = false
+        
       },
         error => {
           this.loading = false
@@ -64,5 +64,8 @@ export class LoginComponent implements OnInit {
   public showError(error: any): void {
     this.toastrService.error(`${error}`);
   }
+
+
+  
 }
 
