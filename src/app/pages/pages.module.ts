@@ -25,11 +25,15 @@ const routes: Routes = [
     loadChildren: ()=> import('./dashboard/dashboard.module').then(p=>p.DashboardModule),
     canActivate: [authGuard]
   },
+  {
+    path:'admin-dashboard',
+    loadChildren: ()=> import('./admin/admin.module').then(p=>p.AdminModule),
+    canActivate: [authGuard]
+  },
 ];
 
 @NgModule({
   declarations: [
-    
   ],
   imports: [
     CommonModule,

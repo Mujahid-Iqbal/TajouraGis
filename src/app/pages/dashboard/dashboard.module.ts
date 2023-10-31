@@ -43,6 +43,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatCheckboxModule,
     
   ],
-  exports: [MapComponent, InfoPanelComponent],
+  exports: [MapComponent, InfoPanelComponent, LeftSideBarComponent],
 })
 export class DashboardModule { }

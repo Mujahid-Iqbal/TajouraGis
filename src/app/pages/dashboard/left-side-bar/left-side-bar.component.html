@@ -10,6 +10,10 @@ class="example-container"
   >
     <div class="logomain"></div>
     <mat-nav-list>
+      <mat-list-item (click)="selectCard(3)" [class.active]="selectedCard === 3">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+      </mat-list-item>
+
       <mat-list-item (click)="selectCard(1)" [class.active]="selectedCard === 1">
         <mat-icon mat-list-icon>map</mat-icon>
       </mat-list-item>
@@ -21,6 +25,7 @@ class="example-container"
       <mat-list-item (click)="selectCard(3)" [class.active]="selectedCard === 3">
         <mat-icon mat-list-icon>school</mat-icon>
       </mat-list-item>
+
     </mat-nav-list>
     
 </mat-sidenav>
