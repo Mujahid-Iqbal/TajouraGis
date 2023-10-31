@@ -1,0 +1,66 @@
+
+
+
+<div class="example-container mat-elevation-z8">
+  <div class="example-header" dir="rtl">
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field dir="rtl">
+          <input matInput (keyup)="applyFilter($event)" placeholder="منقي">
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <ul class="breadcrumb-list">
+          <li class="breadcrumb-item bcrumb-1">
+            <div style="text-align: center;">
+              <button class="add-school-button" (click)="viewSchool()">Add Schools</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <mat-table [dataSource]="dataSource" matSort dir="rtl">
+    <!-- ID Column -->
+    <ng-container matColumnDef="ID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        بطاقة تعريف
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.ID }} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="School Name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        اسم المدرسة
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row["School Name"] }} </mat-cell>
+    </ng-container>
+
+    <!-- View School Column -->
+    <ng-container matColumnDef="viewSchool">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+
+      <mat-cell *matCellDef="let row">
+        <button mat-raised-button color="primary" class="main-btn" (click)="editSchool(row.ID)">
+          منظر
+        </button>
+        <button mat-raised-button color="primary" class="main-btn" (click)="editSchool(row.ID)">
+          يحرر
+        </button>
+        <button mat-raised-button color="primary" class="main-btn" (click)="editSchool(row.ID)">
+          يمسح
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+</div>
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

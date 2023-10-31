@@ -1,0 +1,138 @@
+<h2 mat-dialog-title>School</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>School Name</mat-label>
+              <input matInput formControlName="schoolName" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Type of school</mat-label>
+              <input matInput formControlName="schoolType" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Study period</mat-label>
+              <input matInput formControlName="studyPeriod" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Educational level</mat-label>
+              <input matInput formControlName="educationalLevel" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>X</mat-label>
+              <input matInput formControlName="x" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Y</mat-label>
+              <input matInput formControlName="y" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Number of classes</mat-label>
+              <input matInput formControlName="numberofclasses" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Computer lab</mat-label>
+              <input matInput formControlName="computerlab" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <button mat-button (click)="stepper.next()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Education Level</ng-template>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>School Name</mat-label>
+              <input matInput formControlName="schoolName" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Type of school</mat-label>
+              <input matInput formControlName="schoolType" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Study period</mat-label>
+              <input matInput formControlName="studyPeriod" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Educational level</mat-label>
+              <input matInput formControlName="educationalLevel" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Academic level</mat-label>
+              <input matInput formControlName="academicLevel" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Number of Libyan males</mat-label>
+              <input matInput formControlName="libyanMales" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Number of Libyan females</mat-label>
+              <input matInput formControlName="libyanFemales" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>Number of foreign males</mat-label>
+              <input matInput formControlName="foreignMales" required>
+            </mat-form-field>
+          </div>
+          <!-- Add more fields for the new data here -->
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

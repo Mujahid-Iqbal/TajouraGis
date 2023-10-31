@@ -1,0 +1,56 @@
+<mat-toolbar class="header-container bg-primary-nav">
+    <span>TAJOURA GIS | النظم الجغرافية لمدينة تاجوراء</span>
+    <span class="spacer"></span>
+  
+    <div class="user-dropdown">
+      <span class="username">عَبْدُ النَّاصِر</span>
+      <mat-icon class="dropdown-icon" [matMenuTriggerFor]="userMenu"
+        >arrow_drop_down</mat-icon
+      >
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container
+    fullscreen
+    class="example-container"
+    [hasBackdrop]="false"
+    [@.disabled]="temporaryDisabled"
+  >
+    <mat-sidenav
+      #leftsidenav
+      mode="side"
+      class="example-sidenav"
+      [ngStyle]="{ 'width.em': sidenavWidth }"
+      opened="true"
+      position="start"
+      mode="over"
+      [fixedInViewport]="true"
+      [fixedTopGap]="65"
+    >
+      <div class="logomain"></div>
+      <mat-nav-list>
+        <mat-list-item
+          [routerLink]="'/admin-dashboard'"
+          (click)="selectCard(1)"
+          [class.active]="selectedCard === 1"
+        >
+          <mat-icon mat-list-icon>dashboard</mat-icon>
+        </mat-list-item>
+  
+        <mat-list-item
+          [routerLink]="'/dashboard'"
+          (click)="selectCard(2)"
+          [class.active]="selectedCard === 2"
+        >
+          <mat-icon mat-list-icon>map</mat-icon>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content class="content">
+      <app-tajoura-data></app-tajoura-data>
+  </mat-sidenav-content>
+  </mat-sidenav-container>
+  
