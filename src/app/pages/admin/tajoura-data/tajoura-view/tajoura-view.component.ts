@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { SchoolsData } from 'src/app/core/models/user/schools';
 import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
 
 @Component({
@@ -9,10 +10,12 @@ import { MapServiceService } from 'src/app/core/services/mapService/map-service.
   styleUrls: ['./tajoura-view.component.scss']
 })
 export class TajouraViewComponent implements AfterViewInit{
+  isLinear = false;
+  formData!: SchoolsData
+  formDataLevels!: SchoolsData
   firstFormGroup: FormGroup = new FormGroup({});;
   secondFormGroup: FormGroup = new FormGroup({});;
-  constructor(private _formBuilder: FormBuilder, public mapService: MapServiceService, private dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any, private cdr: ChangeDetectorRef) { 
+  constructor(private _formBuilder: FormBuilder, public mapService: MapServiceService) { 
       this.firstFormGroup = this._formBuilder.group({
         school_name: ['', Validators.required],
         type_of_school: ['', Validators.required],
@@ -55,14 +58,13 @@ export class TajouraViewComponent implements AfterViewInit{
         number_of_females_in_special_categories: ['', Validators.required],
         total:                                   ['', Validators.required],
       });
+      
     }
   
-  isLinear = false;
 
 
   ngAfterViewInit() {
-    console.log(this.data)
-    this.firstFormGroup?.patchValue(this.data)
-    this.cdr.detectChanges();
+    console.log('m')
+    
   }
 }

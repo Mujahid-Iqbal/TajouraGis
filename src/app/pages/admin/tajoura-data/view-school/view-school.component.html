@@ -1,0 +1,109 @@
+<mat-dialog-content class="mat-typography">           
+<div class="container" *ngIf="selectedSchool">
+      <h3>{{ selectedSchool['school_name'] }}</h3>
+      <h4>معلومات المدرسة</h4>
+      <table class="info-table">
+        <tr>
+            <th>نوع المؤسسة</th>
+            <th>الفترة الدراسية</th>
+            <th>المرحلة التعليمية</th>
+            <th>عدد الفصول</th>
+            <th>معمل الكمبيوتر</th>
+            <th>معمل علوم</th>
+            <th>معمل فيزياء</th>
+            <th>معمل كيمياء</th>
+            <th>معمل احياء</th>
+            
+        </tr>
+        <tr>
+          <td>{{ data['type_of_school'] }}</td>
+          <td>{{ data['study_period'] }}</td>
+          <td>{{ data['educational_level'] }}</td>
+          <td>{{ data['number_of_classes']?.join(', ') }}</td>
+          <td>{{ data['computer_lab'] }}</td>
+          <td>{{ data['science_lab'] }}</td>
+          <td>{{ data['physics_lab'] }}</td>
+          <td>{{ data['chemistry_lab'] }}</td>
+          <td>{{ data['biology_lab'] }}</td>
+        </tr>
+    </table>
+    <table class="info-table">
+      <tr>
+        <th>الحجرات الإدارية</th>
+          <th>مسرح</th>
+          <th>مسجد</th>
+          <th>حجرة إسعاف</th>
+          <th>حجرة أخصائي</th>
+          <th>مكتبة</th>
+          <th>مقصف</th>
+          <th>حجرة حراسة</th>
+          <th>ملاعب</th>
+      </tr>
+      <tr>
+        <td>{{ data['administrative_rooms'] }}</td>
+        <td>{{ data['stage'] }}</td>
+        <td>{{ data['mosque'] }}</td>
+        <td>{{ data['ambulance_room'] }}</td>
+        <td>{{ data['specialist_room'] }}</td>
+        <td>{{ data['library'] }}</td>
+        <td>{{ data['canteen'] }}</td>
+        <td>{{ data['guard_room'] }}</td>
+        <td>{{ data['playgrounds'] }}</td>
+      </tr>
+  </table>
+    <table class="info-table">
+      <tr>
+         
+          <th>عدد دورات المياه</th>
+          <th>عدد الفصول</th>
+          <th>عدد الذكور ليبيين</th>
+          <th>عدد الاناث ليبيين</th>
+          <th>عدد الذكور اجانب</th>
+          <th>عدد الاناث أجانب</th>
+          <th>عدد الذكور فئات خاصة</th>
+          <th>عدد الاناث فئات خاصة</th>
+          <th>المجموع</th>
+      </tr>
+      <tr>
+        <td>{{ data['bathrooms'] }}</td>
+        <td>{{ data['academic_level'] }}</td>
+        <td>{{ data['number_of_libyan_males'] }}</td>
+        <td>{{ data['number_of_libyan_females'] }}</td>
+        <td>{{ data['number_of_foreign_males'] }}</td>
+        <td>{{ data['number_of_foreign_females'] }}</td>
+        <td>{{ data['number_of_males_special_categories'] }}</td>
+        <td>{{ data['number_of_females_in_special_categories'] }}</td>
+        <td>{{ data['total'] }}</td>
+      </tr>
+  </table>
+  
+      <h4 class="mt-3">مستويات التعليم</h4>
+      <table border="1">
+        <tr>
+          <th>الصف</th>
+          <th>عدد الفصول</th>
+          <th>عدد الذكور ليبيين</th>
+          <th> عدد الاناث ليبيين</th>
+          <th> عدد الذكور اجانب</th>
+          <th>عدد الاناث أجانب</th>
+          <th>عدد الاناث فئات خاصة</th>
+          <th>المجموع</th>
+        </tr>
+        <tr *ngFor="let level of selectedSchool['academic_levels']">
+          <td>{{ level['academic_level'] }}</td>
+          <td>{{ level['number_of_libyan_males'] }}</td>
+          <td>{{ level['number_of_libyan_females'] }}</td>
+          <td>{{ level['number_of_foreign_males'] }}</td>
+          <td>{{ level['number_of_foreign_females'] }}</td>
+          <td>{{ level['number_of_males_special_categories'] }}</td>
+          <td>{{ level['number_of_females_in_special_categories'] }}</td>
+          <td>{{ level['total'] }}</td>
+        </tr>
+      </table>
+    </div>
+  
+  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</mat-dialog-actions>

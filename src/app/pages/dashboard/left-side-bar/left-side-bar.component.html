@@ -10,7 +10,7 @@ class="example-container"
   >
     <div class="logomain"></div>
     <mat-nav-list>
-      <mat-list-item (click)="selectCard(4)" [class.active]="selectedCard === 4" *ngIf="currentUSer.is_staff === true">
+      <mat-list-item routerLink="/admin-dashboard" (click)="selectCard(4)" [class.active]="selectedCard === 4" *ngIf="currentUSer.is_staff === true">
         <mat-icon mat-list-icon>dashboard</mat-icon>
       </mat-list-item>
 

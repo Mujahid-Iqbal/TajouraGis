@@ -13,7 +13,7 @@
         <ul class="breadcrumb-list">
           <li class="breadcrumb-item bcrumb-1">
             <div style="text-align: center;">
-              <button class="add-school-button" (click)="addSchool()">Add Schools</button>
+              <button class="add-school-button" (click)="addSchool()">أضف مدرسة</button>
             </div>
           </li>
         </ul>
@@ -27,7 +27,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         بطاقة تعريف
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.ID }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
@@ -35,7 +35,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         اسم المدرسة
       </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row["School Name"] }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row["school_name"] }} </mat-cell>
     </ng-container>
 
     <!-- View School Column -->

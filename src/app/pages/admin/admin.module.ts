@@ -20,8 +20,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import { ViewSchoolComponent } from './tajoura-data/view-school/view-school.component';
 @NgModule({
-  declarations: [AdminComponent, TajouraDataComponent, TajouraViewComponent],
+  declarations: [AdminComponent, TajouraDataComponent, TajouraViewComponent, ViewSchoolComponent],
   imports: [
     CommonModule,
     FormsModule,

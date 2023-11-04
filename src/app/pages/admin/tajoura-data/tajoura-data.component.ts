@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TajouraViewComponent } from './tajoura-view/tajoura-view.component';
 import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
+import { ViewSchoolComponent } from './view-school/view-school.component';
 
 @Component({
   selector: 'app-tajoura-data',
@@ -21,7 +22,7 @@ export class TajouraDataComponent implements  AfterViewInit {
 
   constructor( private http: HttpClient,public dialog: MatDialog, private mapService: MapServiceService) {
     // Create 100 users
-    const jsonFile = 'assets/jsonFile/schoolData.json';
+    const jsonFile = 'assets/jsonFile/finalData.json';
     this.http.get(jsonFile).subscribe((data: any) => {
       this.dataSource = new MatTableDataSource(data);
     });
@@ -51,7 +52,7 @@ export class TajouraDataComponent implements  AfterViewInit {
 
   viewSchool(school: any) {
     console.log('view', school )
-    const dialogRef = this.dialog.open(TajouraViewComponent, {
+    const dialogRef = this.dialog.open(ViewSchoolComponent, {
       data: school
     });
 
