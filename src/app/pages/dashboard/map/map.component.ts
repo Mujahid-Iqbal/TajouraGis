@@ -5,9 +5,11 @@ import { CustomDialogService } from 'src/app/core/services/dialog-service/custom
 import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { Subject, debounceTime } from 'rxjs';
+import { Subject, debounceTime, tap } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth-service/auth.service';
 import { environment } from 'src/environments/environment';
+import { SchoolsDataService } from 'src/app/core/services/schoolDataService/schools-data.service';
+import { User } from 'src/app/core/models/user/user';
 
 @Component({
   selector: 'app-map',
@@ -16,13 +18,26 @@ import { environment } from 'src/environments/environment';
 })
 export class MapComponent implements OnInit {
   private userLocation!: mapboxgl.LngLat;
+  currentUSer: User
   searchQuery: string = '';
   private searchQuerySubject = new Subject<string>();
 
-  constructor(private myDialogService: CustomDialogService, private mapService: MapServiceService, private http: HttpClient, private authService: AuthService) { }
+  constructor(
+    private myDialogService: CustomDialogService, 
+    private mapService: MapServiceService, 
+    private http: HttpClient,
+    private authService: AuthService,
+    private schoolDataService: SchoolsDataService) { 
+      this.currentUSer = this.authService.localUser();
+    }
 
   ngOnInit() {
-    const jsonFile = 'assets/jsonFile/schoolData.json';
+    this.schoolDataService.getAllSchools().pipe(
+      tap((res: any) => {
+        console.log('okoko',res)
+      })
+    ).subscribe();
+    const jsonFile = 'assets/jsonFile/finalData.json';
     this.http.get(jsonFile).subscribe((data) => {
       this.mapService.schoolsData = data;
       console.log(this.mapService.schoolsData); // You can now access and work with the JSON data
@@ -43,7 +58,7 @@ export class MapComponent implements OnInit {
         if (searchTerm) {
           const lowercaseSearchTerm = searchTerm.toLowerCase();
           const school = this.mapService.schoolsData.find((s: any) =>
-            s['School Name'].toLowerCase().includes(lowercaseSearchTerm)
+            s['school_ame'].toLowerCase().includes(lowercaseSearchTerm)
           );
           if (school) {
             const schoolLocation = new mapboxgl.LngLat(school.X, school.Y);
@@ -80,10 +95,10 @@ export class MapComponent implements OnInit {
    
     this.mapService.schoolsData.forEach((school: any) => {
       const marker = new mapboxgl.Marker()
-        .setLngLat([school.X, school.Y])
+        .setLngLat([school.x, school.y])
         .addTo(this.mapService.map);
       this.mapService.map.flyTo({
-        center: [school.X, school.Y],
+        center: [school.x, school.y],
         zoom: 10, // You can adjust the zoom level as needed
         speed: 1.2, // Adjust the fly animation speed
 
@@ -93,8 +108,8 @@ export class MapComponent implements OnInit {
         closeButton: false,
         closeOnClick: false
       })
-        .setLngLat([school.X, school.Y])  // Position the popup at the marker's coordinates
-        .setHTML(`<p>${school['School Name']}</p>`)
+        .setLngLat([school.x, school.y])  // Position the popup at the marker's coordinates
+        .setHTML(`<p>${school['school_name']}</p>`)
         .addTo(this.mapService.map);;
 
 

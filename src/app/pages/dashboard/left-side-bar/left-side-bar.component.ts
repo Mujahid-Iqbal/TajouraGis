@@ -4,6 +4,8 @@ import { CustomDialogService } from 'src/app/core/services/dialog-service/custom
 import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
 import * as mapboxgl from 'mapbox-gl';
 import * as geolib from 'geolib';
+import { AuthService } from 'src/app/core/services/auth-service/auth.service';
+import { User } from 'src/app/core/models/user/user';
 
 @Component({
   selector: 'app-left-side-bar',
@@ -16,7 +18,8 @@ export class LeftSideBarComponent implements OnInit {
   selectedCard: number | null = null;
   temporaryDisabled: any = false;
   checkBoxChecked: boolean = true; // Default checked state
-  schools: any
+  schools: any;
+  currentUSer: User
   mapStyle: string = 'mapbox://styles/mujahid-iqbal/clnfw2m1u007b01pi2h2ufz4w';
 
   getMapStyleImage(style: string): string {
@@ -36,7 +39,9 @@ export class LeftSideBarComponent implements OnInit {
     'mapbox://styles/mujahid-iqbal/clnfwpic1021v01qncbsnc8o4': 'الخارج'
   };
   styles = Object.keys(this.styleToMapName);
-  constructor(private customService: CustomDialogService, private mapService: MapServiceService, private el: ElementRef) { }
+  constructor(private customService: CustomDialogService, private mapService: MapServiceService, private el: ElementRef, private authService: AuthService) {
+    this.currentUSer = this.authService.localUser();
+   }
 
   ngOnInit() {
     
@@ -92,7 +97,7 @@ export class LeftSideBarComponent implements OnInit {
     //     }),
     //     'meters away from 51.525, 7.4575'
     // );
-      const distance = geolib.getDistance(targetLocation, { latitude: point.X, longitude:  point.Y});
+      const distance = geolib.getDistance(targetLocation, { latitude: point.x, longitude:  point.y});
       console.log(distance)
       if (distance <= radius * 1000) { // Convert the radius to meters
         // Include the distance directly in the point object

@@ -6,4 +6,5 @@ export class User {
   username?: string;
   is_active ?: boolean;
   auth_token ?: string;
+  is_staff?: boolean
 }

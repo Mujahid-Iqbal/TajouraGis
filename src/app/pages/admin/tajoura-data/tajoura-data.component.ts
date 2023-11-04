@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TajouraViewComponent } from './tajoura-view/tajoura-view.component';
+import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
 
 @Component({
   selector: 'app-tajoura-data',
@@ -18,7 +19,7 @@ export class TajouraDataComponent implements  AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor( private http: HttpClient,public dialog: MatDialog) {
+  constructor( private http: HttpClient,public dialog: MatDialog, private mapService: MapServiceService) {
     // Create 100 users
     const jsonFile = 'assets/jsonFile/schoolData.json';
     this.http.get(jsonFile).subscribe((data: any) => {
@@ -40,7 +41,7 @@ export class TajouraDataComponent implements  AfterViewInit {
     this.dataSource.filter = filterValue;
   }
 
-  editSchool(schoolId: number) {
+  addSchool() {
     const dialogRef = this.dialog.open(TajouraViewComponent);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -48,11 +49,20 @@ export class TajouraDataComponent implements  AfterViewInit {
     });
   }
 
-  viewSchool() {
-    const dialogRef = this.dialog.open(TajouraViewComponent);
+  viewSchool(school: any) {
+    console.log('view', school )
+    const dialogRef = this.dialog.open(TajouraViewComponent, {
+      data: school
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  editSchool(schools: any) {
+  }
+
+  deleteSchool(schools: any) {
   }
 }

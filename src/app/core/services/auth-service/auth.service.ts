@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, map, shareReplay } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthenticatedUser } from '../../models/user/authenticateduser';
+import { User } from '../../models/user/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,6 @@ export class AuthService extends ApiService {
   isLogin: boolean = false
   public currentUser!: Observable<AuthenticatedUser>;
   private currentUserSubject!: BehaviorSubject<AuthenticatedUser>;
-
 
   constructor(private http: HttpClient) {
     super();
@@ -28,6 +28,10 @@ export class AuthService extends ApiService {
 
   public localUserObject() {
     return JSON.parse(localStorage.getItem('currentUser') || '{}') as AuthenticatedUser;
+  }
+
+  public localUser() {
+    return  JSON.parse(localStorage.getItem('currentUserObj')   || '{}') as User;
   }
 
   public updateUser(user: any) {
@@ -56,8 +60,8 @@ export class AuthService extends ApiService {
       .pipe(
         map((user: any) => {
           // store user details and token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('authToken', user.token);
-          
+          localStorage.setItem('authToken', JSON.stringify(user));
+          localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
           return user;
         }),
@@ -89,7 +93,7 @@ export class AuthService extends ApiService {
       .pipe(
         map((user: any) => {
           // store user details and token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('currentUserObj', JSON.stringify(user));
           return user;
         }),
         shareReplay()

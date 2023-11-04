@@ -1,0 +1,10 @@
+export interface EducationalLevel {
+    academic_level:                          string;
+    number_of_libyan_males:                  number;
+    number_of_libyan_females:                number;
+    number_of_foreign_males:                 number;
+    number_of_foreign_females:               number;
+    number_of_males_special_categories:      number;
+    number_of_females_in_special_categories: number;
+    total:                                   number;
+}

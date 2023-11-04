@@ -1,31 +1,31 @@
-<h2 mat-dialog-title>School</h2>
-<mat-dialog-content class="mat-typography">
+<mat-dialog-content class="mat-typography" dir="rtl">
   <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>معلومات المدرسة</ng-template>
+      <form [formGroup]="firstFormGroup" dir="rtl">
         <div class="row">
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
-              <mat-label>School Name</mat-label>
-              <input matInput formControlName="schoolName" required>
+              <mat-label>اسم المدرسة</mat-label>
+              <input matInput formControlName="school_name" required>
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
-              <mat-label>Type of school</mat-label>
-              <input matInput formControlName="schoolType" required>
+              <mat-label>نوع المؤسسة</mat-label>
+              <input matInput formControlName="type_of_school" required>
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
-              <mat-label>Study period</mat-label>
-              <input matInput formControlName="studyPeriod" required>
+              <mat-label>الفترة الدراسية</mat-label>
+              <input matInput formControlName="study_period" required>
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
-              <mat-label>Educational level</mat-label>
-              <input matInput formControlName="educationalLevel" required>
+              <mat-label>المرحلة التعليمية</mat-label>
+              <input matInput formControlName="educational_level" required>
             </mat-form-field>
           </div>
         </div>
@@ -44,95 +44,230 @@
           </div>
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
-              <mat-label>Number of classes</mat-label>
-              <input matInput formControlName="numberofclasses" required>
+              <mat-label> عدد الفصول</mat-label>
+              <input matInput formControlName="number_of_classes" required>
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
-              <mat-label>Computer lab</mat-label>
-              <input matInput formControlName="computerlab" required>
+              <mat-label>معمل الكمبيوتر</mat-label>
+              <input matInput formControlName="computer_lab" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>معمل علوم</mat-label>
+              <input matInput formControlName="science_lab" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>معمل فيزياء</mat-label>
+              <input matInput formControlName="physics_lab" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>معمل كيمياء</mat-label>
+              <input matInput formControlName="chemistry_lab" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>معمل احياء</mat-label>
+              <input matInput formControlName="biology_lab" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>الحجرات الإدارية</mat-label>
+              <input matInput formControlName="administrative_rooms" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>مسرح</mat-label>
+              <input matInput formControlName="stage" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>مسجد</mat-label>
+              <input matInput formControlName="mosque" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>حجرة إسعاف</mat-label>
+              <input matInput formControlName="ambulance_room" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>حجرة أخصائي</mat-label>
+              <input matInput formControlName="specialist_room" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>مكتبة</mat-label>
+              <input matInput formControlName="library" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>مقصف</mat-label>
+              <input matInput formControlName="canteen" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>حجرة حراسة</mat-label>
+              <input matInput formControlName="guard_room" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>ملاعب</mat-label>
+              <input matInput formControlName="playgrounds" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>عدد دورات المياه</mat-label>
+              <input matInput formControlName="bathrooms" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>عدد الفصول</mat-label>
+              <input matInput formControlName="academic_level" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>عدد الذكور ليبيين</mat-label>
+              <input matInput formControlName="number_of_libyan_males" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>عدد الاناث ليبيين</mat-label>
+              <input matInput formControlName="number_of_libyan_females" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>عدد الذكور اجانب</mat-label>
+              <input matInput formControlName="number_of_foreign_males" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>عدد الاناث أجانب</mat-label>
+              <input matInput formControlName="number_of_foreign_females" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>عدد الذكور فئات خاصة</mat-label>
+              <input matInput formControlName="number_of_males_special_categories" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>عدد الاناث فئات خاصة</mat-label>
+              <input matInput formControlName="number_of_females_in_special_categories" required>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <mat-form-field class="full-width">
+              <mat-label>المجموع</mat-label>
+              <input matInput formControlName="total" required>
             </mat-form-field>
           </div>
         </div>
         <div>
-          <button mat-button (click)="stepper.next()">Next</button>
+          <button mat-button (click)="stepper.next()">التالي</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Education Level</ng-template>
-        <div class="row">
-          <div class="col-md-3 col-sm-6">
-            <mat-form-field class="full-width">
-              <mat-label>School Name</mat-label>
-              <input matInput formControlName="schoolName" required>
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <mat-form-field class="full-width">
-              <mat-label>Type of school</mat-label>
-              <input matInput formControlName="schoolType" required>
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <mat-form-field class="full-width">
-              <mat-label>Study period</mat-label>
-              <input matInput formControlName="studyPeriod" required>
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <mat-form-field class="full-width">
-              <mat-label>Educational level</mat-label>
-              <input matInput formControlName="educationalLevel" required>
-            </mat-form-field>
-          </div>
+      <ng-template matStepLabel>مستويات التعليم</ng-template>
+      <form [formGroup]="secondFormGroup" dir="rtl">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>عدد الفصول</mat-label>
+            <input matInput formControlName="academic_level" required>
+          </mat-form-field>
         </div>
-        <div class="row">
-          <div class="col-md-3 col-sm-6">
-            <mat-form-field class="full-width">
-              <mat-label>Academic level</mat-label>
-              <input matInput formControlName="academicLevel" required>
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <mat-form-field class="full-width">
-              <mat-label>Number of Libyan males</mat-label>
-              <input matInput formControlName="libyanMales" required>
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <mat-form-field class="full-width">
-              <mat-label>Number of Libyan females</mat-label>
-              <input matInput formControlName="libyanFemales" required>
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <mat-form-field class="full-width">
-              <mat-label>Number of foreign males</mat-label>
-              <input matInput formControlName="foreignMales" required>
-            </mat-form-field>
-          </div>
-          <!-- Add more fields for the new data here -->
+        <div class="col-md-3 col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>عدد الذكور ليبيين</mat-label>
+            <input matInput formControlName="number_of_libyan_males" required>
+          </mat-form-field>
         </div>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+        <div class="col-md-3 col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>عدد الاناث ليبيين</mat-label>
+            <input matInput formControlName="number_of_libyan_females" required>
+          </mat-form-field>
         </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <div class="col-md-3 col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>عدد الذكور اجانب</mat-label>
+            <input matInput formControlName="number_of_foreign_males" required>
+          </mat-form-field>
+        </div>
       </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>عدد الاناث أجانب</mat-label>
+            <input matInput formControlName="number_of_foreign_females" required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>عدد الذكور فئات خاصة</mat-label>
+            <input matInput formControlName="number_of_males_special_categories" required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>عدد الاناث فئات خاصة</mat-label>
+            <input matInput formControlName="number_of_females_in_special_categories" required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <mat-form-field class="full-width">
+            <mat-label>المجموع</mat-label>
+            <input matInput formControlName="total" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>خلف</button>
+        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+      </div>
+    </form>
     </mat-step>
   </mat-stepper>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
 </mat-dialog-actions>

@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { authGuard } from '../core/auth/guards/auth.guard';
+import { roleGuard } from '../core/auth/guards/role.guard';
 
 const routes: Routes = [
 
@@ -28,7 +29,7 @@ const routes: Routes = [
   {
     path:'admin-dashboard',
     loadChildren: ()=> import('./admin/admin.module').then(p=>p.AdminModule),
-    canActivate: [authGuard]
+    canActivate: [roleGuard]
   },
 ];
 

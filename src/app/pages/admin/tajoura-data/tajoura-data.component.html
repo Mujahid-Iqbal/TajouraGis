@@ -13,7 +13,7 @@
         <ul class="breadcrumb-list">
           <li class="breadcrumb-item bcrumb-1">
             <div style="text-align: center;">
-              <button class="add-school-button" (click)="viewSchool()">Add Schools</button>
+              <button class="add-school-button" (click)="addSchool()">Add Schools</button>
             </div>
           </li>
         </ul>
@@ -43,13 +43,13 @@
       <mat-header-cell *matHeaderCellDef> </mat-header-cell>
 
       <mat-cell *matCellDef="let row">
-        <button mat-raised-button color="primary" class="main-btn" (click)="editSchool(row.ID)">
+        <button mat-raised-button color="primary" class="main-btn" (click)="viewSchool(row)">
           منظر
         </button>
         <button mat-raised-button color="primary" class="main-btn" (click)="editSchool(row.ID)">
           يحرر
         </button>
-        <button mat-raised-button color="primary" class="main-btn" (click)="editSchool(row.ID)">
+        <button mat-raised-button color="primary" class="main-btn" (click)="deleteSchool(row.ID)">
           يمسح
         </button>
       </mat-cell>
