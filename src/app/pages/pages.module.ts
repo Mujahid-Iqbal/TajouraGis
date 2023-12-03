@@ -16,16 +16,15 @@ import { authGuard } from '../core/auth/guards/auth.guard';
 import { roleGuard } from '../core/auth/guards/role.guard';
 
 const routes: Routes = [
-
   {
     path:'',
-    loadChildren: ()=> import('./auth/auth.module').then(p=>p.AuthModule)
+    loadChildren: ()=> import('./dashboard/dashboard.module').then(p=>p.DashboardModule)
   },
   {
-    path:'dashboard',
-    loadChildren: ()=> import('./dashboard/dashboard.module').then(p=>p.DashboardModule),
-    canActivate: [authGuard]
+    path:'user',
+    loadChildren: ()=> import('./auth/auth.module').then(p=>p.AuthModule)
   },
+  
   {
     path:'admin-dashboard',
     loadChildren: ()=> import('./admin/admin.module').then(p=>p.AdminModule),

@@ -44,11 +44,12 @@ export class LeftSideBarComponent implements OnInit {
    }
 
   ngOnInit() {
-    
     setTimeout(() => {
       const userLocationMarker = new mapboxgl.Marker({
         color: 'red' // Customize the marker color
       });
+      this.currentUSer = this.authService.localUser();
+
       navigator.geolocation.getCurrentPosition((position) => {
         const userLocation1: any = [position.coords.longitude, position.coords.latitude];
         console.log('userLocation1', userLocation1)

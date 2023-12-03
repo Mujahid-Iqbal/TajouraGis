@@ -1,6 +1,57 @@
 
 
+<div class="grid-container">
+  <div class="grid-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>المدارس</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Add your content for total schools -->
+        المجموع <span>{{ totalSchools }}</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
 
+  <div class="grid-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>المستشفيات</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Add your content for total hospitals -->
+        المجموع <span>{{ totalHospitals }}</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+
+  <div class="grid-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>مراكز الشرطة</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Add your content for total police stations -->
+        المجموع <span>{{ totalPoliceStations }}</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+  <div class="grid-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>الحدائق</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Add your content for total police stations -->
+        المجموع <span>{{ totalPoliceStations }}</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+</div>
 <div class="example-container mat-elevation-z8">
   <div class="example-header" dir="rtl">
     <div class="row">
@@ -43,15 +94,15 @@
       <mat-header-cell *matHeaderCellDef> </mat-header-cell>
 
       <mat-cell *matCellDef="let row">
-        <button mat-raised-button color="primary" class="main-btn" (click)="viewSchool(row)">
-          منظر
-        </button>
-        <button mat-raised-button color="primary" class="main-btn" (click)="editSchool(row.ID)">
-          يحرر
-        </button>
-        <button mat-raised-button color="primary" class="main-btn" (click)="deleteSchool(row.ID)">
-          يمسح
-        </button>
+        <span  (click)="viewSchool(row)">
+          <mat-icon mat-list-icon >visibility</mat-icon>
+        </span>
+        <span (click)="editSchool(row.ID)">
+          <mat-icon mat-list-icon >edit</mat-icon>
+        </span>
+        <span (click)="deleteSchool(row.ID)">
+          <mat-icon mat-list-icon>delete</mat-icon>
+        </span>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -13,6 +13,16 @@
     flex: 1; /* Pushes the button to the right */
   }
 }
+// Assuming your sidenav has a class named 'sidenav'
+.example-sidenav {
+  & + .content {
+    margin-left: 250px; // Make sure to match the sidenav width
+
+    // Adjust the styles for the content area as needed
+    padding: 16px; // Example padding
+  }
+}
+
 /* Styles for the mat-list-item */
 mat-list-item {
   cursor: pointer;
@@ -23,4 +33,16 @@ mat-list-item.active {
   background-color: #2196f3; /* Change this color to your desired active color */
   color: #fff; /* Change text color to your desired active color */
   border-radius: 10px;
+}
+.mat-drawer-content {
+  margin: 70px 10px 0px 220px !important
+}
+
+.go-back-item {
+  display: flex;
+  align-items: center;
+}
+
+.go-back-text {
+  margin-left: 8px; /* Adjust the margin as needed */
 }

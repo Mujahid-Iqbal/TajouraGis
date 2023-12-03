@@ -14,6 +14,9 @@ import { ViewSchoolComponent } from './view-school/view-school.component';
   styleUrls: ['./tajoura-data.component.scss']
 })
 export class TajouraDataComponent implements  AfterViewInit {
+  totalSchools: number = 180; // Replace with actual data
+  totalHospitals: number = 150; // Replace with actual data
+  totalPoliceStations: number = 120; // Replace with actual data
   displayedColumns = ['ID', 'School Name', 'viewSchool'];
   dataSource!: MatTableDataSource<any>;
 

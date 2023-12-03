@@ -3,7 +3,7 @@
     <div class="m-0 row h-100v page">
       <div class="col-lg-5 align-self-center responsive-hide-banner">
         <div class="align-self-center">
-          <img src="./assets/img/side-logo.svg" width="400px" />
+          <img src="./assets/img/FB_IMG.jpg" width="400px" />
         </div>
       </div>
       <div
@@ -66,7 +66,7 @@
                   >
                   <div *ngIf="f['password'].errors?.['required']">Password is required</div>
                   <div *ngIf="f['password'].errors?.['minlength']">
-                      Password can not be less than 6 characters
+                      Password can not be less than 4 characters
                   </div>
                   </div>
                 </div>
@@ -83,8 +83,15 @@
 
                 </button>
               </div>
+              <!-- Text for signup -->
+              <div class="text-center mt-3" style="margin-left: -50px;">
+                If you don't have an account, please
+                <a href="/register">sign up</a>.
+              </div>
             </div>
+             
           </form>
+                      
         </div>
       </div>
     </div>

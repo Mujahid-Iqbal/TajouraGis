@@ -18,7 +18,7 @@ import { User } from 'src/app/core/models/user/user';
 })
 export class MapComponent implements OnInit {
   private userLocation!: mapboxgl.LngLat;
-  currentUSer: User
+  currentUser?: User
   searchQuery: string = '';
   private searchQuerySubject = new Subject<string>();
 
@@ -28,7 +28,7 @@ export class MapComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private schoolDataService: SchoolsDataService) { 
-      this.currentUSer = this.authService.localUser();
+      this.currentUser = this.authService.localUser();
     }
 
   ngOnInit() {
@@ -37,11 +37,13 @@ export class MapComponent implements OnInit {
         console.log('okoko',res)
       })
     ).subscribe();
+    
     const jsonFile = 'assets/jsonFile/finalData.json';
     this.http.get(jsonFile).subscribe((data) => {
       this.mapService.schoolsData = data;
       console.log(this.mapService.schoolsData); // You can now access and work with the JSON data
       this.initializeMap();
+
     });
 
   }
@@ -58,10 +60,10 @@ export class MapComponent implements OnInit {
         if (searchTerm) {
           const lowercaseSearchTerm = searchTerm.toLowerCase();
           const school = this.mapService.schoolsData.find((s: any) =>
-            s['school_ame'].toLowerCase().includes(lowercaseSearchTerm)
+            s['school_name'].toLowerCase().includes(lowercaseSearchTerm)
           );
           if (school) {
-            const schoolLocation = new mapboxgl.LngLat(school.X, school.Y);
+            const schoolLocation = new mapboxgl.LngLat(school.x, school.y);
             this.mapService.map.flyTo({
               center: [schoolLocation.lng, schoolLocation.lat],
               zoom: 18,
@@ -83,7 +85,7 @@ export class MapComponent implements OnInit {
       zoom: 6, // Set the initial zoom level
      
     });
-    
+
     // Lazy load the RTL text plugin
     mapboxgl.setRTLTextPlugin(
       'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js',

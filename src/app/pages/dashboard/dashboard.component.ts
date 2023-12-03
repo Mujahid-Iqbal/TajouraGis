@@ -8,12 +8,9 @@ import { AuthService } from 'src/app/core/services/auth-service/auth.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(
-     private authService: AuthService) {}
+  constructor() {}
   ngOnInit(): void {
-    this.authService.GetUser().pipe(first())
-    .subscribe((user: any) => {      
-    })
+   
   }
 
   

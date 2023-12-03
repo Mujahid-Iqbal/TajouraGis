@@ -31,7 +31,7 @@ export class AuthService extends ApiService {
   }
 
   public localUser() {
-    return  JSON.parse(localStorage.getItem('currentUserObj')   || '{}') as User;
+    return  JSON.parse(localStorage.getItem('currentUser')   || '{}') as User;
   }
 
   public updateUser(user: any) {
@@ -60,9 +60,10 @@ export class AuthService extends ApiService {
       .pipe(
         map((user: any) => {
           // store user details and token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('authToken', JSON.stringify(user));
+          debugger
+          localStorage.setItem('authToken', JSON.stringify(user.token));
           localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
+          this.currentUserSubject.next(user.token);
           return user;
         }),
         shareReplay()
@@ -84,25 +85,9 @@ export class AuthService extends ApiService {
       )
   }
 
-
-  GetUser(): Observable<object> {
-    return this.http
-      .get<object>(
-        `${environment.apiBaseUrl}/me/`,this.httpOptions
-      )
-      .pipe(
-        map((user: any) => {
-          // store user details and token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUserObj', JSON.stringify(user));
-          return user;
-        }),
-        shareReplay()
-      );
-  }
-
   logout() {
     localStorage.clear();
     this.currentUserSubject.next(null!);
-    window.location.href = '/login';
+    window.location.href = '/user/login';
   }
 }

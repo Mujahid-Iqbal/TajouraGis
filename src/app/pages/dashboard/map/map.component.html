@@ -9,10 +9,12 @@
     <input class="search-input" type="text" placeholder="البحث باسم المدرسة" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)" style="direction: rtl;" />
 
     <div class="user-dropdown">
-        <span class="username">{{currentUSer.username}}</span>
+        <span class="username">{{currentUser && currentUser.username ? currentUser.username : 'login'}}</span>
         <mat-icon class="dropdown-icon" [matMenuTriggerFor]="userMenu">arrow_drop_down</mat-icon>
         <mat-menu #userMenu="matMenu">
-          <button mat-menu-item (click)="logout()">Logout</button>
+          <button mat-menu-item (click)="logout()">
+            {{ currentUser && currentUser.username ? 'Logout' : 'Login' }}
+          </button>
         </mat-menu>
       </div>
   </mat-toolbar>

@@ -11,7 +11,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './core/auth/interceptors/error.interceptor';
 import { TokenInterceptor } from './core/auth/interceptors/token.interceptor';
-
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 
 const routes: Routes = [
@@ -36,6 +36,7 @@ const routes: Routes = [
     NgScrollbarModule,
     SharedModule,
     PagesModule,
+    NgxChartsModule,
     ToastrModule.forRoot({
       closeButton: true,
       timeOut: 5000, // 5 seconds

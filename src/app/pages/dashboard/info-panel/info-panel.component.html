@@ -72,12 +72,12 @@
     <tr>
       <td>{{ data['bathrooms'] }}</td>
       <td>{{ data['academic_level'] }}</td>
-      <td>{{ data['number_of_libyan_males'] }}</td>
-      <td>{{ data['number_of_libyan_females'] }}</td>
-      <td>{{ data['number_of_foreign_males'] }}</td>
-      <td>{{ data['number_of_foreign_females'] }}</td>
-      <td>{{ data['number_of_males_special_categories'] }}</td>
-      <td>{{ data['number_of_females_in_special_categories'] }}</td>
+      <td>{{ data['num_libyan_males'] }}</td>
+      <td>{{ data['num_libyan_females'] }}</td>
+      <td>{{ data['num_foreign_males'] }}</td>
+      <td>{{ data['num_foreign_females'] }}</td>
+      <td>{{ data['num_males_special_categories'] }}</td>
+      <td>{{ data['num_females_special_categories'] }}</td>
       <td>{{ data['total'] }}</td>
     </tr>
 </table>
@@ -96,12 +96,12 @@
       </tr>
       <tr *ngFor="let level of selectedSchool['academic_levels']">
         <td>{{ level['academic_level'] }}</td>
-        <td>{{ level['number_of_libyan_males'] }}</td>
-        <td>{{ level['number_of_libyan_females'] }}</td>
-        <td>{{ level['number_of_foreign_males'] }}</td>
-        <td>{{ level['number_of_foreign_females'] }}</td>
-        <td>{{ level['number_of_males_special_categories'] }}</td>
-        <td>{{ level['number_of_females_in_special_categories'] }}</td>
+        <td>{{ level['num_libyan_males'] }}</td>
+        <td>{{ level['num_libyan_females'] }}</td>
+        <td>{{ level['num_foreign_males'] }}</td>
+        <td>{{ level['num_foreign_females'] }}</td>
+        <td>{{ level['num_males_special_categories'] }}</td>
+        <td>{{ level['num_females_special_categories'] }}</td>
         <td>{{ level['total'] }}</td>
       </tr>
     </table>

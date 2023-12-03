@@ -1,0 +1,66 @@
+<div class="grid-container">
+  <div class="grid-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>المدارس</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Add your content for total schools -->
+        المجموع <span>{{ totalSchools }}</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+
+  <div class="grid-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>المستشفيات</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Add your content for total hospitals -->
+        المجموع <span>{{ totalHospitals }}</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+
+  <div class="grid-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>مراكز الشرطة</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Add your content for total police stations -->
+        المجموع <span>{{ totalPoliceStations }}</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+  <div class="grid-item">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>الحدائق</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Add your content for total police stations -->
+        المجموع <span>{{ totalPoliceStations }}</span>
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+</div>
+<div class="ngx-charts">
+  <ngx-charts-bar-vertical
+      [results]="dataVBC"
+      [view]="viewVBC"
+      [animations]="animationsVBC"
+      [legend]="legendVBC"
+      [xAxis]="xAxisVBC"
+      [yAxis]="yAxisLabelVBC"
+      [showYAxisLabel]="showYAxisLabelVBC"
+      [yAxisLabel]="yAxisLabelVBC"
+      [dataLabelFormatting]="dataLabelFormatterVBC"
+    ></ngx-charts-bar-vertical>
+</div>
+  

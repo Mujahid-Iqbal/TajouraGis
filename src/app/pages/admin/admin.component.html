@@ -11,14 +11,14 @@
         <button mat-menu-item>Logout</button>
       </mat-menu>
     </div>
-  </mat-toolbar>
+</mat-toolbar>
   <mat-sidenav-container
     fullscreen
     class="example-container"
     [hasBackdrop]="false"
     [@.disabled]="temporaryDisabled"
   >
-    <mat-sidenav
+<mat-sidenav
       #leftsidenav
       mode="side"
       class="example-sidenav"
@@ -30,27 +30,58 @@
       [fixedTopGap]="65"
     >
       <div class="logomain"></div>
-      <mat-nav-list>
-        <mat-list-item
+      <mat-nav-list [dir]="'rtl'">
+        <mat-list-item 
           [routerLink]="'/admin-dashboard'"
           (click)="selectCard(1)"
           [class.active]="selectedCard === 1"
         >
           <mat-icon mat-list-icon>dashboard</mat-icon>
+          لوحة القيادة
         </mat-list-item>
-  
+
         <mat-list-item
-          [routerLink]="'/dashboard'"
+        [routerLink]="'/school'"
+        (click)="selectCard(2)"
+        [class.active]="selectedCard === 2"
+      >
+        <mat-icon mat-list-icon>school</mat-icon>
+        المدارس
+      </mat-list-item>
+      <mat-list-item
+          [routerLink]="'/school'"
           (click)="selectCard(2)"
-          [class.active]="selectedCard === 2"
+          [class.active]="selectedCard === 3"
         >
-          <mat-icon mat-list-icon>map</mat-icon>
+          <mat-icon mat-list-icon>local_hospital</mat-icon>
+          المستشفيات
+        </mat-list-item>
+        <mat-list-item
+          [routerLink]="'/school'"
+          (click)="selectCard(2)"
+          [class.active]="selectedCard === 4"
+        >
+          <mat-icon mat-list-icon>account_balance</mat-icon>
+          الجامعات
+        </mat-list-item>
+        <mat-list-item
+          [routerLink]="'/school'"
+          (click)="selectCard(2)"
+          [class.active]="selectedCard === 4"
+        >
+          <mat-icon mat-list-icon>local_police</mat-icon>
+          مراكز الشرطة
+        </mat-list-item>
+
+        <mat-list-item class="go-back-item" (click)="goBack()">
+          <mat-icon mat-list-icon>arrow_back</mat-icon>
+          <span class="go-back-text">عُد</span>
         </mat-list-item>
       </mat-nav-list>
-    </mat-sidenav>
+</mat-sidenav>
   
-    <mat-sidenav-content class="content">
-      <app-tajoura-data></app-tajoura-data>
-  </mat-sidenav-content>
+<mat-sidenav-content class="content">
+  <div #dynamicComponentContainer></div>
+</mat-sidenav-content>
   </mat-sidenav-container>
   

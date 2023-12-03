@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       this.authService.isLogin =false
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(4)]]
     }, {
 
       // validator: MustMatch('password', 'confirm_password'),
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     this.authService.GetAuthToken(userName, password)
       .pipe(first())
       .subscribe((data: any) => {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
         this.loading = false
         
       },
