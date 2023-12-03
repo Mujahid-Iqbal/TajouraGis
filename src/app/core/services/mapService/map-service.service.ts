@@ -31,6 +31,7 @@ export class MapServiceService {
   public closeRightSideNav() {
     return this.rightSideNav.close();
   }
+  
   openSideNav() {
     this.rightSideNav.open().then((sidenavIsOpen: any) => {
       this.sidenavIsOpen = sidenavIsOpen 

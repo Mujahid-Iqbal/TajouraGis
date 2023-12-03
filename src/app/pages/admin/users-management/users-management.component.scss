@@ -1,0 +1,79 @@
+@import "../../../../assets/variables.scss";
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 16px;
+    padding: 16px;
+  
+    .grid-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      direction: rtl;
+      
+      // Style for mat-card
+      mat-card {
+        width: 100%;
+        transition: transform 0.3s, box-shadow 0.3s;
+  
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        direction: rtl;
+        // Additional styling for mat-card components
+        mat-card-header {
+          background-color: $tbl-heading; // Example background color
+          color: #fff; // Example text color
+          direction: rtl;
+          padding: 8px 16px; // Adjust padding as needed
+          box-sizing: border-box;
+        }
+  
+        // Style for mat-card-content
+        mat-card-content {
+          padding: 16px; // Example padding
+          direction: rtl;
+          // Add additional styling as needed
+          font-size: 25px;
+          display: flex;
+          justify-content: space-between;
+          span{
+            color: $com-text;
+          }
+        }
+  
+        // Style for mat-card-footer
+        mat-card-footer {
+          background-color: #e0e0e0; // Example background color
+          padding: 8px; // Example padding
+          direction: rtl;
+          // Add additional styling as needed
+        }
+      }
+    }
+  }
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    margin: 0px 15px 0px 15px;
+    overflow: scroll;
+  }
+  
+  .example-header {
+    min-height: 30px;
+    height: 90px;
+    padding: 8px 24px 0;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }

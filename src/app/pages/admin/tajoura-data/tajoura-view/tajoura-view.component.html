@@ -155,7 +155,7 @@
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
               <mat-label>عدد الذكور ليبيين</mat-label>
-              <input matInput formControlName="number_of_libyan_males" required>
+              <input matInput formControlName="num_libyan_males" required>
             </mat-form-field>
           </div>
         </div>
@@ -163,25 +163,25 @@
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
               <mat-label>عدد الاناث ليبيين</mat-label>
-              <input matInput formControlName="number_of_libyan_females" required>
+              <input matInput formControlName="num_libyan_females" required>
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
               <mat-label>عدد الذكور اجانب</mat-label>
-              <input matInput formControlName="number_of_foreign_males" required>
+              <input matInput formControlName="num_foreign_males" required>
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
               <mat-label>عدد الاناث أجانب</mat-label>
-              <input matInput formControlName="number_of_foreign_females" required>
+              <input matInput formControlName="num_foreign_females" required>
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
               <mat-label>عدد الذكور فئات خاصة</mat-label>
-              <input matInput formControlName="number_of_males_special_categories" required>
+              <input matInput formControlName="num_males_special_categories" required>
             </mat-form-field>
           </div>
         </div>
@@ -189,7 +189,7 @@
           <div class="col-md-3 col-sm-6">
             <mat-form-field class="full-width">
               <mat-label>عدد الاناث فئات خاصة</mat-label>
-              <input matInput formControlName="number_of_females_in_special_categories" required>
+              <input matInput formControlName="num_females_special_categories" required>
             </mat-form-field>
           </div>
           <div class="col-md-3 col-sm-6">
@@ -217,19 +217,19 @@
         <div class="col-md-3 col-sm-6">
           <mat-form-field class="full-width">
             <mat-label>عدد الذكور ليبيين</mat-label>
-            <input matInput formControlName="number_of_libyan_males" required>
+            <input matInput formControlName="num_libyan_males" required>
           </mat-form-field>
         </div>
         <div class="col-md-3 col-sm-6">
           <mat-form-field class="full-width">
             <mat-label>عدد الاناث ليبيين</mat-label>
-            <input matInput formControlName="number_of_libyan_females" required>
+            <input matInput formControlName="num_libyan_females" required>
           </mat-form-field>
         </div>
         <div class="col-md-3 col-sm-6">
           <mat-form-field class="full-width">
             <mat-label>عدد الذكور اجانب</mat-label>
-            <input matInput formControlName="number_of_foreign_males" required>
+            <input matInput formControlName="num_foreign_males" required>
           </mat-form-field>
         </div>
       </div>
@@ -237,19 +237,19 @@
         <div class="col-md-3 col-sm-6">
           <mat-form-field class="full-width">
             <mat-label>عدد الاناث أجانب</mat-label>
-            <input matInput formControlName="number_of_foreign_females" required>
+            <input matInput formControlName="num_foreign_females" required>
           </mat-form-field>
         </div>
         <div class="col-md-3 col-sm-6">
           <mat-form-field class="full-width">
             <mat-label>عدد الذكور فئات خاصة</mat-label>
-            <input matInput formControlName="number_of_males_special_categories" required>
+            <input matInput formControlName="num_males_special_categories" required>
           </mat-form-field>
         </div>
         <div class="col-md-3 col-sm-6">
           <mat-form-field class="full-width">
             <mat-label>عدد الاناث فئات خاصة</mat-label>
-            <input matInput formControlName="number_of_females_in_special_categories" required>
+            <input matInput formControlName="num_females_special_categories" required>
           </mat-form-field>
         </div>
         <div class="col-md-3 col-sm-6">
@@ -269,5 +269,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="createSchoolData()">Save</button>
 </mat-dialog-actions>

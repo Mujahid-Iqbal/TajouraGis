@@ -95,7 +95,7 @@ class="example-container"
           لا توجد مدرسة قريبة
         </i>
           <li *ngFor="let school of schools"> <!-- Display the 5 nearest schools -->
-            {{ school['School Name'] }} ({{ school.distance.toFixed(2) }}  على بعد أمتار) 
+            {{ school['school_name'] }} ({{ school.distance.toFixed(2) }}  على بعد أمتار) 
           </li>
         </ul>
     </div>  

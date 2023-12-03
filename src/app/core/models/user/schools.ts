@@ -23,23 +23,24 @@ export class SchoolsData {
      playgrounds?: string;
      bathrooms?: number;
      academic_level?: string;
-     number_of_libyan_males?: number;
-     number_of_libyan_females?: number;
-     number_of_foreign_males?: number;
-     number_of_foreign_females?: number;
-     number_of_males_special_categories?: number;
-     number_of_females_in_special_categories?: number;
+     num_libyan_males?: number;
+     num_libyan_females?: number;
+     num_foreign_males?: number;
+     num_foreign_females?: number;
+     num_males_special_categories?: number;
+     num_females_special_categories?: number;
      total?: number;
      academic_levels?: EducationalLevel[];
   }
 
   export interface EducationalLevel {
+    school: number;
     academic_level:                          string;
-    number_of_libyan_males:                  number;
-    number_of_libyan_females:                number;
-    number_of_foreign_males:                 number;
-    number_of_foreign_females:               number;
-    number_of_males_special_categories:      number;
-    number_of_females_in_special_categories: number;
+    num_libyan_males:                  number;
+    num_libyan_females:                number;
+    num_foreign_males:                 number;
+    num_foreign_females:               number;
+    num_males_special_categories:      number;
+    num_females_special_categories: number;
     total:                                   number;
 }

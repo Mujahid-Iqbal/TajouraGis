@@ -13,6 +13,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatSelectModule } from '@angular/material/select';
+
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -24,8 +26,9 @@ import { MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import { ViewSchoolComponent } from './tajoura-data/view-school/view-school.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UsersManagementComponent } from './users-management/users-management.component';
 @NgModule({
-  declarations: [AdminComponent, TajouraDataComponent, TajouraViewComponent, ViewSchoolComponent, AdminDashboardComponent],
+  declarations: [AdminComponent, TajouraDataComponent, TajouraViewComponent, ViewSchoolComponent, AdminDashboardComponent, UsersManagementComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -47,7 +50,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     MatButtonModule,
     MatDialogModule,
     MatCardModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatSelectModule
   ],
   exports: [TajouraDataComponent],
 })

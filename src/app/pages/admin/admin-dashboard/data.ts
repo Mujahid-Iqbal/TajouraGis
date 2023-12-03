@@ -19,4 +19,4 @@ export const totalNominalGDP = [
       name: "مراكز الشرطة",
       value: 60,
     },
-  ];
+];

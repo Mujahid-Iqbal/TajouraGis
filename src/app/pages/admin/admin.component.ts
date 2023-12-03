@@ -5,6 +5,11 @@ import { DynamiccomponentserviceService } from '../../core/services/dynamic-serv
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { TajouraDataComponent } from './tajoura-data/tajoura-data.component';
 import { Router } from '@angular/router';
+import { SchoolsDataService } from 'src/app/core/services/schoolDataService/schools-data.service';
+import { tap } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
+import { UsersManagementComponent } from './users-management/users-management.component';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -16,12 +21,14 @@ export class AdminComponent implements OnInit, AfterViewInit {
   sidenavWidth = 15;
   selectedCard: number | null = 1;
   currentUSer: User
-  constructor(public authService: AuthService, private dynamicComponentService: DynamiccomponentserviceService, private router: Router) {
+  
+  constructor(public authService: AuthService, private dynamicComponentService: DynamiccomponentserviceService, private router: Router, public mapService: MapServiceService, public toastrService: ToastrService) {
     this.currentUSer = this.authService.localUser();
    }
   ngOnInit() {}
 
   ngAfterViewInit() {
+    
     // Load your dynamic component on initialization
     this.loadDynamicComponent();
   }
@@ -39,15 +46,23 @@ export class AdminComponent implements OnInit, AfterViewInit {
       // Otherwise, open the selected card
       this.selectedCard = cardNumber;
     }
-
-    if(cardNumber === 2) {
-      this.dynamicComponentService.loadComponent(TajouraDataComponent, this.dynamicComponentContainer);
-    } else {
-      this.dynamicComponentService.loadComponent(AdminDashboardComponent, this.dynamicComponentContainer);
+    switch (cardNumber) {
+      case 2:
+        this.dynamicComponentService.loadComponent(TajouraDataComponent, this.dynamicComponentContainer);
+        break;
+      case 6:
+        this.dynamicComponentService.loadComponent(UsersManagementComponent, this.dynamicComponentContainer);
+        break;
+      default:
+        this.dynamicComponentService.loadComponent(AdminDashboardComponent, this.dynamicComponentContainer);
+        break;
     }
   }
 
   goBack() {
     this.router.navigate(['/']); // Replace '/' with the appropriate route
   }
+
+  
+
 }

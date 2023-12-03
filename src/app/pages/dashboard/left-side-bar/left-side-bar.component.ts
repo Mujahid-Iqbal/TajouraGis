@@ -56,23 +56,18 @@ export class LeftSideBarComponent implements OnInit {
         const userLocation: any = [13.358669 ,32.816529];
         console.log('location' ,userLocation)
         const targetLocation = { latitude: 13.358669, longitude:  32.816529};
-        
-        // console.log(userLocation)  
-      // Set the marker's location to the user's location
+        // Set the marker's location to the user's location
         userLocationMarker.setLngLat(userLocation);
-    
-      // Add the marker to the map
+        // Add the marker to the map
         userLocationMarker.addTo(this.mapService.map);
-        
         const nearbySchools = this.findNearbyPoints( this.mapService.schoolsData, targetLocation, 6);
-        console.log('ear',nearbySchools)
         this.schools = nearbySchools.sort((a: any, b: any) => a['distance'] - b['distance']);
       }, (error) => {
         // Handle geolocation error here
         console.error('Error getting user location:', error);
       });
       
-    }, 1000);
+    }, 6000);
     this.mapService.setRightSidenav(this.rightsidenav);
   }
 
@@ -89,15 +84,6 @@ export class LeftSideBarComponent implements OnInit {
     const nearbyPoints: { data: any, distance: number }[] = [];
 
     for (const point of data) {
-    //   console.log('pointY', point.Y , 'PointX', point.X)
-    //   console.log(
-    //     'You are ',
-    //     geolib.getDistance(targetLocation, {
-    //         latitude: 13.44093,
-    //         longitude: 32.7941083,
-    //     }),
-    //     'meters away from 51.525, 7.4575'
-    // );
       const distance = geolib.getDistance(targetLocation, { latitude: point.x, longitude:  point.y});
       console.log(distance)
       if (distance <= radius * 1000) { // Convert the radius to meters

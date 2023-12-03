@@ -12,7 +12,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './core/auth/interceptors/error.interceptor';
 import { TokenInterceptor } from './core/auth/interceptors/token.interceptor';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [
   // Existing routes
@@ -33,9 +35,12 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     CommonModule,
+    MatSelectModule,
     NgScrollbarModule,
     SharedModule,
     PagesModule,
+    MatDialogModule,
+    MatMenuModule,
     NgxChartsModule,
     ToastrModule.forRoot({
       closeButton: true,

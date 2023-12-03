@@ -1,10 +1,8 @@
-
-
 <div class="grid-container">
   <div class="grid-item">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>المدارس</mat-card-title>
+        <mat-card-title>عدد الذكور</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <!-- Add your content for total schools -->
@@ -17,7 +15,7 @@
   <div class="grid-item">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>المستشفيات</mat-card-title>
+        <mat-card-title>عدد الاناث</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <!-- Add your content for total hospitals -->
@@ -30,7 +28,7 @@
   <div class="grid-item">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>مراكز الشرطة</mat-card-title>
+        <mat-card-title>عدد الاناث أجانب</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <!-- Add your content for total police stations -->
@@ -42,7 +40,7 @@
   <div class="grid-item">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>الحدائق</mat-card-title>
+        <mat-card-title>عدد الذكور اجانب</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <!-- Add your content for total police stations -->
@@ -74,7 +72,7 @@
 
   <mat-table [dataSource]="dataSource" matSort dir="rtl">
     <!-- ID Column -->
-    <ng-container matColumnDef="ID">
+    <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         بطاقة تعريف
       </mat-header-cell>
@@ -97,10 +95,10 @@
         <span  (click)="viewSchool(row)">
           <mat-icon mat-list-icon >visibility</mat-icon>
         </span>
-        <span (click)="editSchool(row.ID)">
+        <span (click)="editSchool(row.id)">
           <mat-icon mat-list-icon >edit</mat-icon>
         </span>
-        <span (click)="deleteSchool(row.ID)">
+        <span (click)="deleteSchool(row.id)">
           <mat-icon mat-list-icon>delete</mat-icon>
         </span>
       </mat-cell>
@@ -109,9 +107,11 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"> </mat-row>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
-
+<div *ngIf="isLoading" class="spinner-overlay">
+  <div class="spinner"></div>
+</div>
 <!-- Copyright 2018 Google Inc. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that
     can be found in the LICENSE file at http://angular.io/license -->

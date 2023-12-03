@@ -41,7 +41,6 @@
         </mat-list-item>
 
         <mat-list-item
-        [routerLink]="'/school'"
         (click)="selectCard(2)"
         [class.active]="selectedCard === 2"
       >
@@ -49,28 +48,32 @@
         المدارس
       </mat-list-item>
       <mat-list-item
-          [routerLink]="'/school'"
-          (click)="selectCard(2)"
+          (click)="selectCard(3)"
           [class.active]="selectedCard === 3"
         >
           <mat-icon mat-list-icon>local_hospital</mat-icon>
           المستشفيات
         </mat-list-item>
         <mat-list-item
-          [routerLink]="'/school'"
-          (click)="selectCard(2)"
+          (click)="selectCard(4)"
           [class.active]="selectedCard === 4"
         >
           <mat-icon mat-list-icon>account_balance</mat-icon>
           الجامعات
         </mat-list-item>
         <mat-list-item
-          [routerLink]="'/school'"
-          (click)="selectCard(2)"
-          [class.active]="selectedCard === 4"
+          (click)="selectCard(5)"
+          [class.active]="selectedCard === 5"
         >
           <mat-icon mat-list-icon>local_police</mat-icon>
           مراكز الشرطة
+        </mat-list-item>
+        <mat-list-item
+          (click)="selectCard(6)"
+          [class.active]="selectedCard === 6"
+        >
+          <mat-icon mat-list-icon>account_circle</mat-icon>
+          المستخدمين
         </mat-list-item>
 
         <mat-list-item class="go-back-item" (click)="goBack()">

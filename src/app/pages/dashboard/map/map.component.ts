@@ -25,7 +25,7 @@ export class MapComponent implements OnInit {
   constructor(
     private myDialogService: CustomDialogService, 
     private mapService: MapServiceService, 
-    private http: HttpClient,
+    private schoolService: SchoolsDataService,
     private authService: AuthService,
     private schoolDataService: SchoolsDataService) { 
       this.currentUser = this.authService.localUser();
@@ -33,18 +33,21 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.schoolDataService.getAllSchools().pipe(
-      tap((res: any) => {
-        console.log('okoko',res)
+      tap((data: any) => {
+        this.mapService.schoolsData = data;
+        this.schoolService.totalAllSchools = data.length
+      console.log(this.mapService.schoolsData); // You can now access and work with the JSON data
+      this.initializeMap();
       })
     ).subscribe();
     
-    const jsonFile = 'assets/jsonFile/finalData.json';
-    this.http.get(jsonFile).subscribe((data) => {
-      this.mapService.schoolsData = data;
-      console.log(this.mapService.schoolsData); // You can now access and work with the JSON data
-      this.initializeMap();
+    // const jsonFile = 'assets/jsonFile/finalData.json';
+    // this.http.get(jsonFile).subscribe((data) => {
+    //   this.mapService.schoolsData = data;
+    //   console.log(this.mapService.schoolsData); // You can now access and work with the JSON data
+    //   this.initializeMap();
 
-    });
+    // });
 
   }
 

@@ -1,8 +1,9 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { SchoolsData } from 'src/app/core/models/user/schools';
 import { MapServiceService } from 'src/app/core/services/mapService/map-service.service';
+import { SchoolsDataService } from 'src/app/core/services/schoolDataService/schools-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tajoura-view',
@@ -15,7 +16,7 @@ export class TajouraViewComponent implements AfterViewInit{
   formDataLevels!: SchoolsData
   firstFormGroup: FormGroup = new FormGroup({});;
   secondFormGroup: FormGroup = new FormGroup({});;
-  constructor(private _formBuilder: FormBuilder, public mapService: MapServiceService) { 
+  constructor(private _formBuilder: FormBuilder, public mapService: MapServiceService, public schoolService: SchoolsDataService, public toastrService: ToastrService) { 
       this.firstFormGroup = this._formBuilder.group({
         school_name: ['', Validators.required],
         type_of_school: ['', Validators.required],
@@ -40,22 +41,22 @@ export class TajouraViewComponent implements AfterViewInit{
         playgrounds: ['', Validators.required],
         bathrooms: ['', Validators.required],
         academic_level:                         ['', Validators.required],
-        number_of_libyan_males:                  ['', Validators.required],
-        number_of_libyan_females:                ['', Validators.required],
-        number_of_foreign_males:                 ['', Validators.required],
-        number_of_foreign_females:               ['', Validators.required],
-        number_of_males_special_categories:      ['', Validators.required],
-        number_of_females_in_special_categories: ['', Validators.required],
+        num_libyan_males:                  ['', Validators.required],
+        num_libyan_females:                ['', Validators.required],
+        num_foreign_males:                 ['', Validators.required],
+        num_foreign_females:               ['', Validators.required],
+        num_males_special_categories:      ['', Validators.required],
+        num_females_special_categories: ['', Validators.required],
         total:                                   ['', Validators.required],
       });
       this.secondFormGroup = this._formBuilder.group({
         academic_level:                          ['', Validators.required],
-        number_of_libyan_males:                  ['', Validators.required],
-        number_of_libyan_females:                ['', Validators.required],
-        number_of_foreign_males:                 ['', Validators.required],
-        number_of_foreign_females:               ['', Validators.required],
-        number_of_males_special_categories:      ['', Validators.required],
-        number_of_females_in_special_categories: ['', Validators.required],
+        num_libyan_males:                  ['', Validators.required],
+        num_libyan_females:                ['', Validators.required],
+        num_foreign_males:                 ['', Validators.required],
+        num_foreign_females:               ['', Validators.required],
+        num_males_special_categories:      ['', Validators.required],
+        num_females_special_categories: ['', Validators.required],
         total:                                   ['', Validators.required],
       });
       
@@ -64,7 +65,40 @@ export class TajouraViewComponent implements AfterViewInit{
 
 
   ngAfterViewInit() {
-    console.log('m')
-    
+  }
+
+  createSchoolData() {
+    const formData = this.firstFormGroup.value;
+    this.schoolService.createSchool(formData).subscribe(
+      (response) => {
+        this.showSuccess('School created successfully')
+        this.createLevels(response.id)
+        this.schoolService.allSchool('success')
+      },
+      (error) => {
+        this.showError('Error creating school')
+      }
+    );
+  }
+
+  createLevels(schoolId: any) {
+    const formData = this.secondFormGroup.value;
+    const secondFormDataWithSchoolId = { ...formData, school:schoolId };
+    this.schoolService.createAcademicLevel(secondFormDataWithSchoolId).subscribe(
+      (response) => {
+        this.showSuccess('Academic level created successfully')
+      },
+      (error) => {
+        this.showError('Error creating academic level')
+      }
+    );
+  }
+
+  public showError(error: any): void {
+    this.toastrService.error(`${error}`);
+  }
+
+  public showSuccess(error: any): void {
+    this.toastrService.success(`${error}`);
   }
 }

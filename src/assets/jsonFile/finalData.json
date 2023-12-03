@@ -33,6 +33,7 @@
       "total": 139,
       "academic_levels": [
         {
+          "school": 1,
           "academic_level": "الثاني",
           "num_libyan_males": 77,
           "num_libyan_females": 61,
@@ -43,6 +44,7 @@
           "total": 140
         },
         {
+          "school": 1,
           "academic_level": "الثالث",
           "num_libyan_males": 70,
           "num_libyan_females": 65,
@@ -53,6 +55,7 @@
           "total": 136
         },
         {
+          "school": 1,
           "academic_level": "الرابع",
           "num_libyan_males": 59,
           "num_libyan_females": 59,
@@ -63,6 +66,7 @@
           "total": 121
         },
         {
+          "school": 1,
           "academic_level": "الخامس",
           "num_libyan_males": 48,
           "num_libyan_females": 45,
@@ -73,6 +77,7 @@
           "total": 97
         },
         {
+          "school": 1,
           "academic_level": "السادس",
           "num_libyan_males": 66,
           "num_libyan_females": 55,
@@ -83,6 +88,7 @@
           "total": 121
         },
         {
+          "school": 1,
           "academic_level": "السابع",
           "num_libyan_males": 53,
           "num_libyan_females": 64,
@@ -93,6 +99,7 @@
           "total": 121
         },
         {
+          "school": 1,
           "academic_level": "الثامن",
           "num_libyan_males": 22,
           "num_libyan_females": 48,
@@ -103,6 +110,7 @@
           "total": 73
         },
         {
+          "school": 1,
           "academic_level": "التاسع",
           "num_libyan_males": 42,
           "num_libyan_females": 53,
@@ -113,6 +121,7 @@
           "total": 97
         },
         {
+          "school": 1,
           "academic_level": "الاول الثانوي",
           "num_libyan_males": 0,
           "num_libyan_females": 165,
@@ -123,6 +132,7 @@
           "total": 181
         },
         {
+          "school": 1,
           "academic_level": "الثاني ثانوي علمي",
           "num_libyan_males": 0,
           "num_libyan_females": 89,
@@ -133,6 +143,7 @@
           "total": 94
         },
         {
+          "school": 1,
           "academic_level": "الثاني ثانوي ادبي",
           "num_libyan_males": 0,
           "num_libyan_females": 22,
@@ -143,6 +154,7 @@
           "total": 23
         },
         {
+          "school": 1,
           "academic_level": "الثالث ثانوي علمي",
           "num_libyan_males": 0,
           "num_libyan_females": 79,
@@ -153,6 +165,7 @@
           "total": 87
         },
         {
+          "school": 1,
           "academic_level": "الثالث ثانوي ادبي",
           "num_libyan_males": 0,
           "num_libyan_females": 25,
